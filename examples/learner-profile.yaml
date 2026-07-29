@@ -1,0 +1,19 @@
+certification_id: SAA-C03
+language: zh-TW
+experience:
+  web_frontend: intermediate
+  backend: intermediate
+  databases: intermediate
+  networking: beginner
+  aws: beginner
+preferences:
+  explain_acronyms: true
+  show_progress: true
+  interactive_lessons: true
+  randomize_answer_positions: true
+  question_language: zh-TW
+  explanation_language: zh-TW
+weak_domains:
+  - secure_architectures
+  - resilient_architectures
+objective_status: {}

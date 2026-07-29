@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "AIF-C01-RAI-001",
+  "certification_id": "AIF-C01",
+  "domain_id": "responsible_ai",
+  "difficulty": "exam",
+  "question_type": "multiple_choice",
+  "language": "en",
+  "skills_tested": ["responsible_ai", "bias_evaluation"],
+  "scenario": {
+    "context": "A lender is evaluating an AI-assisted application review system before allowing staff to use it. Historical training data contains substantially fewer examples from some demographic groups.",
+    "current_state": "The project team has measured overall model accuracy but has not compared outcomes across relevant groups.",
+    "problem": "The compliance team wants evidence that the system does not systematically disadvantage underrepresented groups.",
+    "constraints": [
+      {"type": "ai_responsibility", "text": "Evaluate outcomes across relevant demographic groups"},
+      {"type": "compliance", "text": "Complete the assessment before production use"}
+    ]
+  },
+  "stem": "Which action best addresses the compliance team's concern?",
+  "options": [
+    {"id": "A", "text": "Increase the model temperature to produce more varied outputs", "classification": "wrong_service_boundary"},
+    {"id": "B", "text": "Compare performance and outcome metrics across relevant groups and investigate material disparities", "classification": "best_answer"},
+    {"id": "C", "text": "Evaluate only aggregate accuracy because the same model is used for every applicant", "classification": "violates_requirement"},
+    {"id": "D", "text": "Deploy the system first and review group-level outcomes only after customer complaints", "classification": "violates_requirement"}
+  ],
+  "correct_answers": ["B"],
+  "decisive_constraints": ["Group-level evaluation", "Assessment before deployment"],
+  "explanation": {
+    "summary": "Responsible AI evaluation should examine whether model performance or outcomes differ materially across relevant groups instead of relying only on aggregate accuracy.",
+    "option_analysis": {
+      "A": "Temperature changes generation variability and does not measure demographic performance disparities.",
+      "B": "Group-level metrics directly test the identified risk and support investigation before deployment.",
+      "C": "Aggregate accuracy can hide poor performance or adverse outcomes for smaller groups.",
+      "D": "Waiting for complaints fails the requirement to assess the risk before production use."
+    },
+    "learning_points": ["Aggregate metrics can conceal subgroup disparities", "Responsible AI controls should be applied throughout the AI lifecycle"]
+  },
+  "sources": [
+    {"title": "AWS Certified AI Practitioner exam guide", "url": "https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html", "accessed_at": "2026-07-30"},
+    {"title": "Responsible AI at AWS", "url": "https://aws.amazon.com/ai/responsible-ai/", "accessed_at": "2026-07-30"}
+  ],
+  "review": {"status": "approved", "technical_accuracy": 5, "answer_uniqueness": 5, "distractor_quality": 4, "depth_alignment": 5, "originality": 5, "notes": "Original responsible-AI scenario."}
+}

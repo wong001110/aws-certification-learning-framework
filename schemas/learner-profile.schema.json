@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learner Profile",
+  "type": "object",
+  "required": ["certification_id", "language", "experience", "preferences"],
+  "properties": {
+    "certification_id": {"type": "string"},
+    "language": {"type": "string"},
+    "experience": {"type": "object", "additionalProperties": {"enum": ["none", "beginner", "intermediate", "advanced"]}},
+    "preferences": {"type": "object", "additionalProperties": true},
+    "weak_domains": {"type": "array", "items": {"type": "string"}},
+    "objective_status": {"type": "object", "additionalProperties": {"enum": ["not_started", "introduced", "practicing", "proficient", "needs_review"]}}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,37 @@
+schema_version: 1
+
+foundational:
+  purpose: Validate broad concepts, business use cases, service positioning, security awareness, and cost awareness.
+  concepts_per_question: [1, 2]
+  hard_constraints: [0, 2]
+  viable_options: [1, 2]
+  implementation_detail: low
+  architecture_tradeoffs: low
+  prohibited_emphasis: [obscure_api_parameters, implementation_troubleshooting, complex_multi_account_architecture]
+
+associate:
+  purpose: Validate practical service selection, implementation decisions, troubleshooting, and architecture tradeoffs for a role.
+  concepts_per_question: [2, 4]
+  hard_constraints: [2, 4]
+  viable_options: [2, 3]
+  implementation_detail: practical
+  architecture_tradeoffs: medium
+  required_emphasis: [service_boundaries, operational_tradeoffs, security_reliability_performance_or_cost]
+
+professional:
+  purpose: Validate advanced decisions across complex systems, organizations, migrations, governance, and competing constraints.
+  concepts_per_question: [4, 7]
+  hard_constraints: [3, 6]
+  viable_options: [3, 4]
+  implementation_detail: advanced
+  architecture_tradeoffs: high
+  required_emphasis: [organizational_constraints, multi_stage_or_multi_account_decisions, risk_and_cost_tradeoffs]
+
+specialty:
+  purpose: Validate deep technical expertise and failure-mode reasoning in a specific domain.
+  concepts_per_question: [2, 5]
+  hard_constraints: [2, 5]
+  viable_options: [2, 4]
+  implementation_detail: advanced_domain_specific
+  architecture_tradeoffs: medium_to_high
+  required_emphasis: [domain_failure_modes, service_limits_and_boundaries, deep_implementation_reasoning]

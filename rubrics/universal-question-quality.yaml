@@ -1,0 +1,19 @@
+schema_version: 1
+maximum_score: 100
+approval_threshold: 85
+categories:
+  technical_accuracy: {weight: 30, minimum: 30, description: All AWS facts and the declared answer are correct and current.}
+  answer_uniqueness: {weight: 20, minimum: 20, description: Exactly the intended number of responses satisfies all stated requirements.}
+  distractor_quality: {weight: 15, minimum: 11, description: Distractors are plausible, distinct, and fail for explainable reasons.}
+  depth_alignment: {weight: 15, minimum: 11, description: The reasoning depth matches the certification level and selected domain.}
+  source_grounding: {weight: 10, minimum: 10, description: Time-sensitive facts are supported by public AWS sources with access dates.}
+  clarity_and_fairness: {weight: 5, minimum: 4, description: Wording is precise and constraints are sufficient.}
+  originality: {weight: 5, minimum: 5, description: The scenario and options are independently authored.}
+automatic_rejection:
+  - incorrect_aws_fact
+  - unintended_multiple_best_answers
+  - copied_or_reconstructed_exam_content
+  - unsupported_superlative_claim
+  - wrong_certification_depth
+  - missing_sources
+  - obsolete_behavior_presented_as_current

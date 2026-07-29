@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "CLF-C02-CLOUD-001",
+  "certification_id": "CLF-C02",
+  "domain_id": "cloud_concepts",
+  "difficulty": "exam",
+  "question_type": "multiple_choice",
+  "language": "en",
+  "skills_tested": ["cloud_economics", "elasticity"],
+  "scenario": {
+    "context": "A small media company launches short promotional campaigns several times each year. Traffic is low between campaigns and rises sharply for a few days during each launch.",
+    "current_state": "The company owns servers sized for peak traffic, but most capacity is idle during normal periods.",
+    "problem": "The finance manager wants to reduce the cost of unused computing capacity without limiting campaign traffic.",
+    "constraints": [
+      {"type": "cost", "text": "Pay for capacity in proportion to actual demand"},
+      {"type": "business", "text": "Continue supporting short periods of high traffic"}
+    ]
+  },
+  "stem": "Which AWS Cloud benefit most directly addresses these requirements?",
+  "options": [
+    {"id": "A", "text": "Economies of scale from purchasing larger on-premises servers", "classification": "wrong_service_boundary"},
+    {"id": "B", "text": "Elastic capacity that can scale with demand and reduce unused resources", "classification": "best_answer"},
+    {"id": "C", "text": "A fixed multi-year hardware refresh cycle", "classification": "violates_requirement"},
+    {"id": "D", "text": "Physical control of every server used by the application", "classification": "out_of_scope"}
+  ],
+  "correct_answers": ["B"],
+  "decisive_constraints": ["Variable demand", "Reduce idle capacity"],
+  "explanation": {
+    "summary": "Elasticity allows resources to grow and shrink with workload demand, reducing the need to pay continuously for peak-sized capacity.",
+    "option_analysis": {
+      "A": "Buying larger on-premises servers preserves the idle-capacity problem and is not an AWS Cloud benefit that matches variable demand.",
+      "B": "Elasticity directly supports temporary traffic spikes while allowing capacity to decrease when demand falls.",
+      "C": "A fixed hardware lifecycle does not align cost with actual usage and can leave substantial capacity idle.",
+      "D": "Physical server control does not solve the stated cost and scaling requirements."
+    },
+    "learning_points": ["Elasticity aligns capacity with changing demand", "Cloud value questions focus on business outcomes rather than implementation details"]
+  },
+  "sources": [
+    {"title": "AWS Certified Cloud Practitioner exam guide", "url": "https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html", "accessed_at": "2026-07-30"},
+    {"title": "What is cloud computing?", "url": "https://aws.amazon.com/what-is-cloud-computing/", "accessed_at": "2026-07-30"}
+  ],
+  "review": {"status": "approved", "technical_accuracy": 5, "answer_uniqueness": 5, "distractor_quality": 4, "depth_alignment": 5, "originality": 5, "notes": "Original foundational scenario."}
+}

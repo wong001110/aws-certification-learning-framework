@@ -1,0 +1,27 @@
+schema_version: 1
+verified_at: "2026-07-30"
+official_exam_guides_url: https://docs.aws.amazon.com/aws-certification/latest/examguides/aws-certification-exam-guides.html
+
+levels:
+  foundational:
+    description: Overall understanding of AWS Cloud, AI, or machine learning concepts.
+  associate:
+    description: Technical skills for a defined job role.
+  professional:
+    description: Advanced skills for complex technical tasks and systems.
+  specialty:
+    description: Deep expertise in a specific technical domain.
+
+certifications:
+  - {id: AIF-C01, name: AWS Certified AI Practitioner, level: foundational, status: active, pack_path: certifications/foundational/AIF-C01/certification.yaml}
+  - {id: CLF-C02, name: AWS Certified Cloud Practitioner, level: foundational, status: active, pack_path: certifications/foundational/CLF-C02/certification.yaml}
+  - {id: SOA-C03, name: AWS Certified CloudOps Engineer - Associate, level: associate, status: active, pack_path: null}
+  - {id: DEA-C01, name: AWS Certified Data Engineer - Associate, level: associate, status: active, pack_path: null}
+  - {id: DVA-C02, name: AWS Certified Developer - Associate, level: associate, status: active, pack_path: null}
+  - {id: MLA-C01, name: AWS Certified Machine Learning Engineer - Associate, level: associate, status: active, pack_path: null}
+  - {id: SAA-C03, name: AWS Certified Solutions Architect - Associate, level: associate, status: active, pack_path: certifications/associate/SAA-C03/certification.yaml}
+  - {id: DOP-C02, name: AWS Certified DevOps Engineer - Professional, level: professional, status: active, pack_path: null}
+  - {id: AIP-C01, name: AWS Certified Generative AI Developer - Professional, level: professional, status: active, pack_path: null}
+  - {id: SAP-C02, name: AWS Certified Solutions Architect - Professional, level: professional, status: active, pack_path: null}
+  - {id: ANS-C01, name: AWS Certified Advanced Networking - Specialty, level: specialty, status: active, pack_path: null}
+  - {id: SCS-C03, name: AWS Certified Security - Specialty, level: specialty, status: active, pack_path: null}
