@@ -81,9 +81,10 @@ Reject any question with an ambiguous answer, weak distractors, unsupported fact
 Requirements: Python 3.11 or newer.
 
 ```bash
-python -m pip install -e '.[dev]'
+python -m pip install --no-build-isolation -e '.[dev]'
 python -m validator.validate
-pytest
+python -m pytest
+python -m ruff check validator tests
 ```
 
 Or:
@@ -101,8 +102,8 @@ schemas/          Machine-readable content contracts
 rubrics/          Review and difficulty standards
 examples/         Learner profile and original example questions
 validator/        Deterministic content validation
-checks/           Static policy and distribution checks
-models/           Shared model-agnostic terminology
+tests/            Validator regression tests
+docs/             Architecture, source policy, and contribution guides
 .github/           Continuous integration
 ```
 
