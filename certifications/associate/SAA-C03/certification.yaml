@@ -1,0 +1,49 @@
+schema_version: 1
+certification:
+  id: SAA-C03
+  name: AWS Certified Solutions Architect - Associate
+  level: associate
+  role_focus: solutions_architecture
+  status: active
+  verified_at: "2026-07-30"
+
+source:
+  exam_guide: https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html
+
+candidate:
+  recommended_exposure: At least 1 year of hands-on experience designing cloud solutions that use AWS services.
+  implementation_expected: true
+
+question_types:
+  - multiple_choice
+  - multiple_response
+
+scoring:
+  passing_scaled_score: 720
+
+domains:
+  - id: secure_architectures
+    name: Design Secure Architectures
+    weight: 30
+  - id: resilient_architectures
+    name: Design Resilient Architectures
+    weight: 26
+  - id: high_performance_architectures
+    name: Design High-Performing Architectures
+    weight: 24
+  - id: cost_optimized_architectures
+    name: Design Cost-Optimized Architectures
+    weight: 20
+
+depth_profile: associate
+question_patterns:
+  - architecture_selection
+  - architecture_improvement
+  - migration_design
+  - failure_tolerance
+  - security_remediation
+  - performance_optimization
+  - cost_optimization
+learning_defaults:
+  advanced_mock_question_language: English
+  explanation_language: learner_preference
