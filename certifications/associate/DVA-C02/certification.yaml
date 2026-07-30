@@ -1,0 +1,27 @@
+schema_version: 1
+certification:
+  id: DVA-C02
+  name: AWS Certified Developer - Associate
+  level: associate
+  role_focus: application_development
+  status: active
+  verified_at: '2026-07-30'
+source:
+  exam_guide: https://docs.aws.amazon.com/aws-certification/latest/developer-associate-02/developer-associate-02.html
+candidate:
+  recommended_exposure: At least 1 year of hands-on experience developing and maintaining applications by using AWS services.
+  implementation_expected: true
+question_types: [multiple_choice, multiple_response]
+scoring:
+  passing_scaled_score: 720
+domains:
+- {id: development_with_aws_services, name: Development with AWS Services, weight: 32}
+- {id: security, name: Security, weight: 26}
+- {id: deployment, name: Deployment, weight: 24}
+- {id: troubleshooting_and_optimization, name: Troubleshooting and Optimization, weight: 18}
+depth_profile: associate
+question_patterns: [application_implementation, serverless_development, service_integration, application_security, deployment_strategy, debugging_and_optimization]
+curriculum:
+  path: certifications/associate/DVA-C02/curriculum.yaml
+  version: '0.2'
+out_of_scope_emphasis: [enterprise_architecture_design, network_infrastructure_design, server_administration]
