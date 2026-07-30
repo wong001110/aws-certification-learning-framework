@@ -1,0 +1,25 @@
+schema_version: 1
+id: architecture-decision-foundations
+certification_id: SAA-C03
+curriculum_version: '0.2'
+title: Architecture decisions from constraints and tradeoffs
+objective_ids: [saa-global-infrastructure, saa-service-comparisons]
+prerequisite_lesson_ids: []
+estimated_minutes: 55
+delivery:
+- {type: orientation, title: From services to decisions, instructions: Explain that SAA-C03 questions require choosing the best architecture under multiple constraints rather than recalling a definition.}
+- {type: explanation, title: Hard and soft constraints, instructions: Teach the learner to separate mandatory requirements from preferences such as lower cost or lower operational overhead.}
+- {type: comparison, title: Technically possible versus best, instructions: Compare a managed multi-Availability Zone solution with a custom solution that can work but requires more operations.}
+- {type: worked_example, title: Constraint extraction, instructions: Walk through an original architecture scenario and label security resilience performance cost and operations constraints before considering services.}
+- type: knowledge_check
+  title: Eliminate distractors
+  instructions: Give four short architecture proposals and ask the learner to identify which requirement each losing option violates.
+  expected_response: The learner cites a specific constraint or service boundary for each eliminated option.
+- {type: summary, title: Decision procedure, instructions: Summarize identify hard constraints identify the optimization preference compare viable designs eliminate partial solutions and choose the best remaining option.}
+knowledge_checks:
+- {id: saa-decision-check-1, type: free_response, prompt: Why can a technically functioning architecture still be the wrong SAA-C03 answer?, evidence: [It may violate a hard requirement, It may have unnecessary cost or operational overhead]}
+- {id: saa-decision-check-2, type: scenario, prompt: A workload must survive an Availability Zone failure and minimize administration. What two properties should be checked before comparing service names?, evidence: [Cross-Availability Zone resilience, Managed or low-operational-overhead behavior]}
+sources:
+- {title: AWS Certified Solutions Architect - Associate exam guide, url: 'https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html', accessed_at: '2026-07-30'}
+- {title: AWS Well-Architected Framework, url: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html', accessed_at: '2026-07-30'}
+review: {status: approved, verified_at: '2026-07-30', notes: Original lesson blueprint for architecture reasoning rather than service memorization.}
