@@ -4,6 +4,7 @@ certification_id: SAA-C03
 curriculum_version: '0.2'
 title: Architecture decisions from constraints and tradeoffs
 objective_ids: [saa-global-infrastructure, saa-service-comparisons]
+source_ids: [saa-c03-exam-guide, aws-well-architected-framework]
 prerequisite_lesson_ids: []
 estimated_minutes: 55
 delivery:
@@ -17,9 +18,9 @@ delivery:
   expected_response: The learner cites a specific constraint or service boundary for each eliminated option.
 - {type: summary, title: Decision procedure, instructions: Summarize identify hard constraints identify the optimization preference compare viable designs eliminate partial solutions and choose the best remaining option.}
 knowledge_checks:
-- {id: saa-decision-check-1, type: free_response, prompt: Why can a technically functioning architecture still be the wrong SAA-C03 answer?, evidence: [It may violate a hard requirement, It may have unnecessary cost or operational overhead]}
-- {id: saa-decision-check-2, type: scenario, prompt: A workload must survive an Availability Zone failure and minimize administration. What two properties should be checked before comparing service names?, evidence: [Cross-Availability Zone resilience, Managed or low-operational-overhead behavior]}
+- {id: saa-decision-check-1, type: free_response, prompt: 'Why can a technically functioning architecture still be the wrong SAA-C03 answer?', evidence: [It may violate a hard requirement, It may have unnecessary cost or operational overhead]}
+- {id: saa-decision-check-2, type: scenario, prompt: 'A workload must survive an Availability Zone failure and minimize administration. What two properties should be checked before comparing service names?', evidence: [Cross-Availability Zone resilience, Managed or low-operational-overhead behavior]}
 sources:
-- {title: AWS Certified Solutions Architect - Associate exam guide, url: 'https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html', accessed_at: '2026-07-30'}
-- {title: AWS Well-Architected Framework, url: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html', accessed_at: '2026-07-30'}
+- {title: 'AWS Certified Solutions Architect - Associate exam guide', url: 'https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html', accessed_at: '2026-07-30'}
+- {title: 'AWS Well-Architected Framework', url: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html', accessed_at: '2026-07-30'}
 review: {status: approved, verified_at: '2026-07-30', notes: Original lesson blueprint for architecture reasoning rather than service memorization.}

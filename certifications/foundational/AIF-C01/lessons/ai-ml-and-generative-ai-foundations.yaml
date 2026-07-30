@@ -4,6 +4,7 @@ certification_id: AIF-C01
 curriculum_version: '0.2'
 title: AI, machine learning, and generative AI foundations
 objective_ids: [aif-ai-ml-basics, aif-generative-ai]
+source_ids: [aif-c01-exam-guide, aws-ai-overview]
 prerequisite_lesson_ids: []
 estimated_minutes: 45
 delivery:
@@ -17,9 +18,9 @@ delivery:
   expected_response: The learner distinguishes predictive outputs from generated content.
 - {type: summary, title: Practitioner boundary, instructions: Summarize the concepts without mathematical derivations or model-training implementation details.}
 knowledge_checks:
-- {id: aif-foundations-check-1, type: comparison, prompt: How does a fraud-classification system differ from a system that drafts a customer response?, evidence: [Classification predicts a category, Drafting creates new content]}
-- {id: aif-foundations-check-2, type: scenario, prompt: A company wants to forecast weekly demand and generate a written explanation for planners. Which part is predictive ML and which part is generative AI?, evidence: [Forecast is predictive, Written explanation is generative]}
+- {id: aif-foundations-check-1, type: comparison, prompt: 'How does a fraud-classification system differ from a system that drafts a customer response?', evidence: [Classification predicts a category, Drafting creates new content]}
+- {id: aif-foundations-check-2, type: scenario, prompt: 'A company wants to forecast weekly demand and generate a written explanation for planners. Which part is predictive ML and which part is generative AI?', evidence: [Forecast is predictive, Written explanation is generative]}
 sources:
-- {title: AWS Certified AI Practitioner exam guide, url: 'https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html', accessed_at: '2026-07-30'}
-- {title: What is artificial intelligence?, url: 'https://aws.amazon.com/what-is/artificial-intelligence/', accessed_at: '2026-07-30'}
+- {title: 'AWS Certified AI Practitioner exam guide', url: 'https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html', accessed_at: '2026-07-30'}
+- {title: 'What is artificial intelligence?', url: 'https://aws.amazon.com/what-is/artificial-intelligence/', accessed_at: '2026-07-30'}
 review: {status: approved, verified_at: '2026-07-30', notes: Original lesson blueprint for foundational AI distinctions.}

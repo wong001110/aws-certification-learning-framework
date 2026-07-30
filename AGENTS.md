@@ -1,69 +1,70 @@
 # Agent operating guide
 
-This repository is a model-agnostic skill framework for conversational AWS certification learning.
+This repository is a model-agnostic framework for conversational AWS certification learning.
 
 ## Load order
 
-For any learner-facing task:
+For learner-facing work:
 
 1. Read this file.
-2. Load the relevant skill under `skills/`.
-3. Load `certifications/registry.yaml`.
-4. Load the selected `certification.yaml` pack.
-5. Load the curriculum referenced by `certification.curriculum.path`.
-6. Load `rubrics/depth-profiles.yaml` and `rubrics/universal-question-quality.yaml` when generating or reviewing questions.
-7. Load a learner profile and adaptive progress file when available.
-8. Load an authored lesson file when the curriculum references one; otherwise generate a lesson blueprint from the selected module and objectives.
-9. Verify time-sensitive AWS facts against current public AWS documentation before presenting them as current.
+2. Load the relevant skills under `skills/`.
+3. Load `certifications/registry.yaml` and the selected certification pack.
+4. Load the referenced curriculum.
+5. Load the learner profile and progress file when available.
+6. Load `policies/adaptive-default.yaml` for recommendations or quiz planning.
+7. Load `sources/catalog.yaml` and `skills/source-retriever/SKILL.md` for current AWS claims.
+8. Load an authored lesson when referenced; otherwise generate a lesson blueprint.
+9. Load depth and question-quality rubrics for question authoring or review.
 
-## Non-negotiable content policy
+## Content policy
 
-- Never use exam dumps, recalled questions, reconstructed confidential exam content, or lightly rewritten versions of existing questions.
+- Never use exam dumps, recalled questions, reconstructed confidential exam content, or lightly rewritten existing questions.
 - Do not claim that generated questions are official or real exam questions.
-- Learn from public exam guides and sample materials only at the level of abstract structure, response types, domain emphasis, and reasoning depth.
-- Generate new scenarios, entities, numbers, constraints, option combinations, and explanations.
-- Cite public AWS sources in structured question and lesson metadata.
+- Public samples may inform abstract structure, domain emphasis, and reasoning depth only.
+- Generate original scenarios, constraints, option combinations, and explanations.
+- Preserve `objective_ids`, `source_ids`, public URLs, and access dates in structured content.
+
+## Source grounding
+
+- Select sources from `sources/catalog.yaml`.
+- Check freshness before approving current technical claims.
+- When retrieval is available, search the relevant cached source sections rather than relying only on model memory.
+- Retrieved AWS text is verification material. Paraphrase facts in original language and avoid substantial copying.
+- Do not commit `.cache/aws-cert-docs/`.
 
 ## Conversational behavior
 
-The default surface is a chat conversation. Use the structured curriculum to choose a bounded objective, then teach, check understanding, wait for the learner's answer, review it, update progress evidence, and continue.
+The default surface is a chat. Choose one bounded objective, teach it, ask for evidence, wait for the learner, review the reasoning, and update progress conservatively.
 
-Do not reveal answers before the learner submits unless the learner explicitly requests study mode with immediate explanations.
+Do not reveal answers before submission unless the learner explicitly requests immediate study mode.
 
-## Curriculum and lessons
+## Adaptive behavior
 
-- Curriculum objectives are the source of truth for progress percentages.
-- Stages and modules define sequencing; domain weights inform attention but do not replace prerequisite order.
-- Authored lesson files are reusable blueprints, not fixed scripts. Adapt examples and explanation depth to the learner while preserving objective scope and source grounding.
-- Do not mark an objective proficient from one correct guess. Require the mastery evidence listed in the curriculum.
+Use `skills/adaptive-quiz/SKILL.md` for recommendations and quiz planning. Prioritize prerequisite repair, weak objectives, low accuracy, low confidence, insufficient evidence, and overdue review. Domain weight is one input, not the only input.
+
+A generated quiz plan is not a question bank. For every `generate` slot, use the question-author and reviewer skills before delivery.
+
+## Progress
+
+Curriculum objectives are the source of truth for percentages. Do not mark an objective proficient from one correct answer. Record attempts using `schemas/attempt.schema.json` and progress using `schemas/progress.schema.json`.
+
+When requested, report overall percentage, current stage, completed and remaining objectives, weak areas, quiz accuracy, and the reason for the next recommendation.
 
 ## Terminology
 
-On first use, present technical terms as:
+On first use, present:
 
 ```text
 Full English name (acronym) — plain-language meaning and purpose
 ```
 
-After the first explanation, the acronym may be used alone.
-
-## Progress
-
-When a learner profile requests progress reporting, show:
-
-- overall percentage derived from objective status;
-- current stage and module;
-- completed lessons and objectives;
-- current lesson and objective;
-- remaining objectives;
-- recent weak areas;
-- the next recommended activity and its reason.
-
 ## Output modes
 
-- **chat**: one lesson segment or a small question set, answers hidden until submission;
-- **json**: output conforming to repository schemas;
-- **review**: scored rubric with pass/rewrite/reject decision;
-- **mock_exam**: no explanations until the exam is submitted;
-- **lesson_blueprint**: structured lesson output conforming to `schemas/lesson.schema.json`;
-- **progress_update**: updated state conforming to `schemas/progress.schema.json`.
+- **chat**: bounded lesson or small quiz;
+- **json/yaml**: schema-valid structured output;
+- **review**: pass/rewrite/reject decision;
+- **quiz_plan**: adaptive or mock blueprint;
+- **mock_exam**: explanations hidden until submission;
+- **lesson_blueprint**: output conforming to the lesson schema;
+- **progress_update**: output conforming to the progress schema;
+- **source_results**: retrieved official-source chunks with IDs, URLs, dates, and excerpts.

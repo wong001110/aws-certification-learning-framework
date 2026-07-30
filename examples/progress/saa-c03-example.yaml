@@ -27,23 +27,10 @@ weak_objectives: [saa-network-security]
 next_recommendation:
   activity_type: comparison
   objective_ids: [saa-network-security]
-  reason: The learner needs to distinguish security groups, network ACLs, routing, and private connectivity before continuing.
+  reason: The learner needs to distinguish security groups network ACLs routing and private connectivity before continuing.
+quiz_summary: {total_attempts: 7, total_correct: 4, recent_results: [correct, partial, incorrect], last_session_at: '2026-07-30T10:20:00+08:00'}
+adaptive_state: {last_policy_version: '0.4', last_recommendation_at: '2026-07-30T10:20:00+08:00', seen_question_ids: [global-infrastructure-check, network-boundary-check]}
 history:
-- occurred_at: '2026-07-30T09:30:00+08:00'
-  activity_type: lesson
-  reference_id: orientation-baseline
-  result: completed
-  objective_ids: [saa-exam-map]
-  notes: Exam structure and learning method understood.
-- occurred_at: '2026-07-30T10:10:00+08:00'
-  activity_type: question
-  reference_id: global-infrastructure-check
-  result: correct
-  objective_ids: [saa-global-infrastructure]
-  notes: Correct answer with partial reasoning.
-- occurred_at: '2026-07-30T10:20:00+08:00'
-  activity_type: question
-  reference_id: network-boundary-check
-  result: incorrect
-  objective_ids: [saa-network-security]
-  notes: Confused route tables with traffic filtering controls.
+- {occurred_at: '2026-07-30T09:30:00+08:00', activity_type: lesson, reference_id: orientation-baseline, result: completed, objective_ids: [saa-exam-map], notes: Exam structure and learning method understood.}
+- {occurred_at: '2026-07-30T10:10:00+08:00', activity_type: question, reference_id: global-infrastructure-check, result: correct, objective_ids: [saa-global-infrastructure], notes: Correct answer with partial reasoning.}
+- {occurred_at: '2026-07-30T10:20:00+08:00', activity_type: question, reference_id: network-boundary-check, result: incorrect, objective_ids: [saa-network-security], notes: Confused route tables with traffic filtering controls.}

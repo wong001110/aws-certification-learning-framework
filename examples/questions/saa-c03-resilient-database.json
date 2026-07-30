@@ -3,29 +3,72 @@
   "id": "SAA-C03-RES-001",
   "certification_id": "SAA-C03",
   "domain_id": "resilient_architectures",
+  "objective_ids": [
+    "saa-resilient-data"
+  ],
+  "source_ids": [
+    "saa-c03-exam-guide",
+    "rds-multi-az",
+    "rds-read-replicas"
+  ],
   "difficulty": "exam",
   "question_type": "multiple_choice",
   "language": "en",
-  "skills_tested": ["multi_az_design", "managed_database_availability", "operational_overhead"],
+  "skills_tested": [
+    "multi_az_design",
+    "managed_database_availability",
+    "operational_overhead"
+  ],
   "scenario": {
     "context": "A company runs a customer portal on Amazon EC2 instances behind an Application Load Balancer. The instances are distributed across two Availability Zones. The application stores transactional data in a self-managed relational database on one EC2 instance.",
     "current_state": "The web tier can continue operating after an instance failure, but a database host failure causes a prolonged outage while administrators restore a backup.",
     "problem": "The company needs automatic database failover across Availability Zones.",
     "constraints": [
-      {"type": "reliability", "text": "Tolerate the failure of one Availability Zone"},
-      {"type": "operations", "text": "Minimize database administration and failover work"},
-      {"type": "data", "text": "Continue using a relational database"}
+      {
+        "type": "reliability",
+        "text": "Tolerate the failure of one Availability Zone"
+      },
+      {
+        "type": "operations",
+        "text": "Minimize database administration and failover work"
+      },
+      {
+        "type": "data",
+        "text": "Continue using a relational database"
+      }
     ]
   },
   "stem": "Which solution best meets these requirements?",
   "options": [
-    {"id": "A", "text": "Move the database to an Amazon RDS Multi-AZ deployment and update the application to use the database endpoint", "classification": "best_answer"},
-    {"id": "B", "text": "Create an Amazon RDS read replica in another Availability Zone and direct all writes to the read replica after a failure", "classification": "violates_requirement"},
-    {"id": "C", "text": "Run a second self-managed database on Amazon EC2 and create custom scripts to detect failures and promote the secondary", "classification": "excessive_operational_overhead"},
-    {"id": "D", "text": "Store relational database files in an Amazon S3 bucket so that a replacement EC2 instance can mount them after a failure", "classification": "wrong_service_boundary"}
+    {
+      "id": "A",
+      "text": "Move the database to an Amazon RDS Multi-AZ deployment and update the application to use the database endpoint",
+      "classification": "best_answer"
+    },
+    {
+      "id": "B",
+      "text": "Create an Amazon RDS read replica in another Availability Zone and direct all writes to the read replica after a failure",
+      "classification": "violates_requirement"
+    },
+    {
+      "id": "C",
+      "text": "Run a second self-managed database on Amazon EC2 and create custom scripts to detect failures and promote the secondary",
+      "classification": "excessive_operational_overhead"
+    },
+    {
+      "id": "D",
+      "text": "Store relational database files in an Amazon S3 bucket so that a replacement EC2 instance can mount them after a failure",
+      "classification": "wrong_service_boundary"
+    }
   ],
-  "correct_answers": ["A"],
-  "decisive_constraints": ["Automatic cross-Availability Zone failover", "Relational database", "Minimum operational overhead"],
+  "correct_answers": [
+    "A"
+  ],
+  "decisive_constraints": [
+    "Automatic cross-Availability Zone failover",
+    "Relational database",
+    "Minimum operational overhead"
+  ],
   "explanation": {
     "summary": "An Amazon RDS Multi-AZ deployment provides managed synchronous standby capacity and automatic failover while preserving a relational database interface and reducing administration.",
     "option_analysis": {
@@ -34,12 +77,36 @@
       "C": "A custom EC2-based replication and promotion design can be made to work but conflicts with the requirement to minimize administration and failover work.",
       "D": "Amazon S3 is object storage and cannot be mounted as relational database block storage in the proposed design."
     },
-    "learning_points": ["Multi-AZ addresses managed database availability", "Read replicas and Multi-AZ deployments solve different primary problems", "A technically possible custom design can still be the wrong answer when operations must be minimized"]
+    "learning_points": [
+      "Multi-AZ addresses managed database availability",
+      "Read replicas and Multi-AZ deployments solve different primary problems",
+      "A technically possible custom design can still be the wrong answer when operations must be minimized"
+    ]
   },
   "sources": [
-    {"title": "AWS Certified Solutions Architect - Associate exam guide", "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html", "accessed_at": "2026-07-30"},
-    {"title": "Amazon RDS Multi-AZ deployments", "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html", "accessed_at": "2026-07-30"},
-    {"title": "Working with DB instance read replicas", "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html", "accessed_at": "2026-07-30"}
+    {
+      "title": "AWS Certified Solutions Architect - Associate exam guide",
+      "url": "https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html",
+      "accessed_at": "2026-07-30"
+    },
+    {
+      "title": "Amazon RDS Multi-AZ deployments",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html",
+      "accessed_at": "2026-07-30"
+    },
+    {
+      "title": "Working with DB instance read replicas",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+      "accessed_at": "2026-07-30"
+    }
   ],
-  "review": {"status": "approved", "technical_accuracy": 5, "answer_uniqueness": 5, "distractor_quality": 5, "depth_alignment": 5, "originality": 5, "notes": "Original scenario testing high availability and operational tradeoffs."}
+  "review": {
+    "status": "approved",
+    "technical_accuracy": 5,
+    "answer_uniqueness": 5,
+    "distractor_quality": 5,
+    "depth_alignment": 5,
+    "originality": 5,
+    "notes": "Original scenario testing high availability and operational tradeoffs."
+  }
 }

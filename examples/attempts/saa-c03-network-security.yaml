@@ -1,0 +1,14 @@
+schema_version: 1
+id: saa-c03-network-security-attempt-001
+certification_id: SAA-C03
+occurred_at: '2026-07-30T14:40:00+08:00'
+activity_type: question
+session_id: saa-c03-adaptive-session-001
+question_id: saa-c03-network-boundary-original-001
+result: incorrect
+objective_ids: [saa-network-security]
+domain_ids: [secure_architectures]
+confidence_before: 0.45
+confidence_after: 0.32
+duration_seconds: 94
+notes: Confused route-table behavior with stateful traffic filtering.

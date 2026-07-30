@@ -1,37 +1,28 @@
 ---
 name: question-reviewer
-description: Independently review AWS practice questions for technical correctness, answer uniqueness, depth, distractor quality, and source compliance.
+description: Independently review AWS practice questions for technical correctness, source freshness, answer uniqueness, depth, and distractor quality.
 ---
 
 # Question Reviewer
 
 ## Review sequence
 
-1. Validate the JSON schema.
-2. Check the certification and domain against the registry and pack.
-3. Verify each technical assertion against current public AWS sources.
-4. Solve the question independently without reading the declared answer first when possible.
-5. Compare the independent answer with the declared answer.
-6. Test whether another option also satisfies all stated requirements.
-7. Score the question using `rubrics/universal-question-quality.yaml`.
-8. Return `approved`, `rewrite`, or `rejected`.
+1. Validate `schemas/question.schema.json`.
+2. Check certification, domain, and objective IDs against the pack and curriculum.
+3. Resolve `source_ids` through `sources/catalog.yaml` and check freshness.
+4. Retrieve relevant official sections when available and verify each technical assertion.
+5. Solve independently without reading the declared answer first when possible.
+6. Compare the independent answer with the declared answer.
+7. Test whether another option also satisfies all requirements.
+8. Score with `rubrics/universal-question-quality.yaml`.
+9. Return `approved`, `rewrite`, or `rejected`.
 
-## Automatic rejection conditions
+## Automatic rejection
 
-- incorrect AWS fact;
-- ambiguous or multiple unintended best answers;
-- copied or reconstructed confidential content;
-- unsupported claim about lowest cost, highest performance, or least operational effort;
-- wrong depth for the certification;
-- missing option analysis or sources;
-- obsolete service behavior presented as current.
+Reject incorrect AWS facts, ambiguous answers, copied or reconstructed confidential content, unsupported superlative claims, wrong depth, mismatched source IDs and URLs, obsolete behavior, or missing option analysis.
 
-## Rewrite conditions
+## Rewrite
 
-- weak or obvious distractors;
-- unnecessary wording;
-- correct answer is conspicuously longer or more specific;
-- scenario contains unused constraints;
-- question can be solved by one superficial keyword.
+Rewrite is required for weak distractors, unused constraints, wording clues, conspicuously long correct answers, or questions solvable through one superficial keyword.
 
-Return scores, evidence, failure modes, and precise rewrite instructions. Do not silently fix and approve a question in the same review pass.
+Return scores, retrieved evidence IDs, failure modes, and precise rewrite instructions. Do not silently fix and approve in the same review pass.

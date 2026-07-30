@@ -4,6 +4,7 @@ curriculum_version: '0.2'
 title: DEA-C01 Structured Conversational Curriculum
 description: A structured data-engineering curriculum for ingestion transformation storage operations security and governance on AWS.
 estimated_hours: 58
+source_ids: [dea-c01-exam-guide]
 stages:
 - {id: stage-01-orientation, order: 1, title: Orientation and baseline, kind: orientation, description: Orientation and baseline, module_ids: [dea-orientation], completion: {required_objective_status: introduced, minimum_evidence_count: 1}}
 - {id: stage-02-foundations, order: 2, title: Data engineering foundations, kind: foundations, description: Data engineering foundations, module_ids: [dea-foundations], completion: {required_objective_status: proficient, minimum_evidence_count: 2}}

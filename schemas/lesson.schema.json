@@ -2,27 +2,102 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Structured AWS Certification Lesson",
   "type": "object",
-  "required": ["schema_version", "id", "certification_id", "curriculum_version", "title", "objective_ids", "estimated_minutes", "delivery", "knowledge_checks", "sources", "review"],
+  "required": [
+    "schema_version",
+    "id",
+    "certification_id",
+    "curriculum_version",
+    "title",
+    "objective_ids",
+    "estimated_minutes",
+    "delivery",
+    "knowledge_checks",
+    "sources",
+    "review"
+  ],
   "properties": {
-    "schema_version": {"type": "integer", "minimum": 1},
-    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,95}$"},
-    "certification_id": {"type": "string", "pattern": "^[A-Z]{2,3}-C[0-9]{2}$"},
-    "curriculum_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"},
-    "title": {"type": "string", "minLength": 5},
-    "objective_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
-    "prerequisite_lesson_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
-    "estimated_minutes": {"type": "integer", "minimum": 5, "maximum": 240},
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{2,95}$"
+    },
+    "certification_id": {
+      "type": "string",
+      "pattern": "^[A-Z]{2,3}-C[0-9]{2}$"
+    },
+    "curriculum_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5
+    },
+    "objective_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{2,95}$"
+      }
+    },
+    "prerequisite_lesson_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "estimated_minutes": {
+      "type": "integer",
+      "minimum": 5,
+      "maximum": 240
+    },
     "delivery": {
       "type": "array",
       "minItems": 3,
       "items": {
         "type": "object",
-        "required": ["type", "title", "instructions"],
+        "required": [
+          "type",
+          "title",
+          "instructions"
+        ],
         "properties": {
-          "type": {"enum": ["orientation", "explanation", "comparison", "worked_example", "hands_on", "knowledge_check", "summary"]},
-          "title": {"type": "string", "minLength": 3},
-          "instructions": {"type": "string", "minLength": 10},
-          "expected_response": {"type": "string"}
+          "type": {
+            "enum": [
+              "orientation",
+              "explanation",
+              "comparison",
+              "worked_example",
+              "hands_on",
+              "knowledge_check",
+              "summary"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 3
+          },
+          "instructions": {
+            "type": "string",
+            "minLength": 10
+          },
+          "expected_response": {
+            "type": "string"
+          }
         },
         "additionalProperties": false
       }
@@ -32,12 +107,39 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "type", "prompt", "evidence"],
+        "required": [
+          "id",
+          "type",
+          "prompt",
+          "evidence"
+        ],
         "properties": {
-          "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,95}$"},
-          "type": {"enum": ["diagnostic", "free_response", "comparison", "scenario", "hands_on", "quiz"]},
-          "prompt": {"type": "string", "minLength": 10},
-          "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 3}}
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{2,95}$"
+          },
+          "type": {
+            "enum": [
+              "diagnostic",
+              "free_response",
+              "comparison",
+              "scenario",
+              "hands_on",
+              "quiz"
+            ]
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 10
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 3
+            }
+          }
         },
         "additionalProperties": false
       }
@@ -47,22 +149,49 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["title", "url", "accessed_at"],
+        "required": [
+          "title",
+          "url",
+          "accessed_at"
+        ],
         "properties": {
-          "title": {"type": "string", "minLength": 3},
-          "url": {"type": "string", "format": "uri"},
-          "accessed_at": {"type": "string", "format": "date"}
+          "title": {
+            "type": "string",
+            "minLength": 3
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "accessed_at": {
+            "type": "string",
+            "format": "date"
+          }
         },
         "additionalProperties": false
       }
     },
     "review": {
       "type": "object",
-      "required": ["status", "verified_at"],
+      "required": [
+        "status",
+        "verified_at"
+      ],
       "properties": {
-        "status": {"enum": ["draft", "approved", "needs_revalidation"]},
-        "verified_at": {"type": "string", "format": "date"},
-        "notes": {"type": "string"}
+        "status": {
+          "enum": [
+            "draft",
+            "approved",
+            "needs_revalidation"
+          ]
+        },
+        "verified_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "notes": {
+          "type": "string"
+        }
       },
       "additionalProperties": false
     }

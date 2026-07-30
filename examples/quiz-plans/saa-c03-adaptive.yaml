@@ -1,0 +1,60 @@
+schema_version: 1
+id: saa-c03-adaptive-20260730t144500z
+certification_id: SAA-C03
+mode: adaptive
+generated_at: '2026-07-30T14:45:00+00:00'
+policy_version: '0.4'
+question_count: 5
+time_limit_minutes: null
+domain_distribution:
+  secure_architectures: 3
+  resilient_architectures: 2
+question_type_distribution:
+  multiple_choice: 4
+  multiple_response: 1
+objective_ids: [saa-network-security, saa-global-infrastructure, saa-resilient-data]
+slots:
+  - position: 1
+    domain_id: secure_architectures
+    objective_ids: [saa-network-security]
+    difficulty: exam
+    question_type: multiple_choice
+    source:
+      kind: generate
+      authoring_constraints: {objective_ids: [saa-network-security], domain_id: secure_architectures, difficulty: exam, question_type: multiple_choice, official_sources_required: true, original_content_required: true}
+    selection_reason: adaptive objective priority
+  - position: 2
+    domain_id: resilient_architectures
+    objective_ids: [saa-resilient-data]
+    difficulty: exam
+    question_type: multiple_choice
+    source: {kind: existing, question_id: SAA-C03-RES-001, path: examples/questions/saa-c03-resilient-database.json}
+    selection_reason: adaptive objective priority
+  - position: 3
+    domain_id: secure_architectures
+    objective_ids: [saa-global-infrastructure]
+    difficulty: teaching
+    question_type: multiple_choice
+    source:
+      kind: generate
+      authoring_constraints: {objective_ids: [saa-global-infrastructure], domain_id: secure_architectures, difficulty: teaching, question_type: multiple_choice, official_sources_required: true, original_content_required: true}
+    selection_reason: adaptive objective priority
+  - position: 4
+    domain_id: resilient_architectures
+    objective_ids: [saa-resilient-data]
+    difficulty: exam
+    question_type: multiple_response
+    source:
+      kind: generate
+      authoring_constraints: {objective_ids: [saa-resilient-data], domain_id: resilient_architectures, difficulty: exam, question_type: multiple_response, official_sources_required: true, original_content_required: true}
+    selection_reason: adaptive objective priority
+  - position: 5
+    domain_id: secure_architectures
+    objective_ids: [saa-network-security]
+    difficulty: exam
+    question_type: multiple_choice
+    source:
+      kind: generate
+      authoring_constraints: {objective_ids: [saa-network-security], domain_id: secure_architectures, difficulty: exam, question_type: multiple_choice, official_sources_required: true, original_content_required: true}
+    selection_reason: adaptive objective priority
+notice: This is an unofficial planning blueprint. Generated questions must be original and independently reviewed.

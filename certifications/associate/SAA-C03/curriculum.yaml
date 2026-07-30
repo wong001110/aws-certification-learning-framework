@@ -4,6 +4,7 @@ curriculum_version: '0.2'
 title: SAA-C03 Structured Conversational Curriculum
 description: A structured adaptive architecture curriculum focused on constraints service boundaries and tradeoff reasoning.
 estimated_hours: 60
+source_ids: [saa-c03-exam-guide, saa-c03-technologies-concepts, saa-c03-in-scope-services]
 stages:
 - {id: stage-01-orientation, order: 1, title: Orientation and baseline, kind: orientation, description: Orientation and baseline, module_ids: [saa-orientation], completion: {required_objective_status: introduced, minimum_evidence_count: 1}}
 - {id: stage-02-foundations, order: 2, title: Architecture foundations, kind: foundations, description: Architecture foundations, module_ids: [saa-foundations], completion: {required_objective_status: proficient, minimum_evidence_count: 2}}
@@ -45,3 +46,5 @@ objectives:
 - {id: saa-mock-readiness, title: Demonstrate full-domain exam readiness and explain remaining weak areas, domain_ids: [secure_architectures, resilient_architectures, high_performance_architectures, cost_optimized_architectures], importance: core, prerequisite_objective_ids: [saa-timed-readiness], mastery_evidence: [timed_question, integrated_scenario]}
 sources:
 - {title: AWS Certified Solutions Architect - Associate exam guide, url: 'https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html', accessed_at: '2026-07-30'}
+- {title: SAA-C03 technologies and concepts, url: 'https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/saa-technologies-concepts.html', accessed_at: '2026-07-30'}
+- {title: SAA-C03 in-scope AWS services, url: 'https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/saa-03-in-scope-services.html', accessed_at: '2026-07-30'}

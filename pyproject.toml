@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aws-certification-learning-framework"
-version = "0.2.0"
-description = "Validation tools for an agent-compatible AWS certification learning framework"
+version = "0.4.0"
+description = "Agent-compatible AWS certification learning, adaptive quiz, retrieval, and validation tools"
 requires-python = ">=3.11"
 dependencies = [
   "jsonschema>=4.22,<5",
@@ -17,6 +17,9 @@ dev = [
   "pytest>=8.2,<10",
   "ruff>=0.5,<1",
 ]
+
+[project.scripts]
+aws-cert = "validator.cli:main"
 
 [tool.setuptools]
 packages = ["validator"]

@@ -1,42 +1,47 @@
 # Architecture
 
-## MVP boundary
+## Runtime boundary
 
-The MVP is a repository-driven conversational framework. It does not require a web application, database, retrieval service, or model fine-tuning.
+Version 0.4 remains local-first and conversation-first. A web application, external database, vector database, and model fine-tuning are not required.
 
 ```text
-Learner message
-    -> Universal skills + learner profile
-    -> Certification pack
-    -> Versioned curriculum
-    -> Lesson blueprint + adaptive progress
-    -> AI conversation output
-    -> Question review and progress evidence
+Learner message or CLI command
+  -> universal skill + certification pack
+  -> versioned curriculum + progress
+  -> adaptive policy
+  -> official source catalog
+  -> optional local retrieval cache
+  -> lesson, quiz plan, review, or progress update
 ```
 
-## Separation of concerns
+## Components
 
-- Universal skills define selection, planning, lesson authoring, teaching, question authoring, review, exam assembly, and progress coaching.
-- Certification packs define official metadata, domains, weights, response types, target depth, source URLs, and curriculum location.
-- Curricula define stable stages, modules, objectives, prerequisites, and mastery evidence.
-- Lesson files define reusable teaching blueprints that agents adapt to the learner.
-- Progress files persist objective evidence across conversations and AI models.
-- Schemas make content portable and testable.
-- The deterministic validator checks structure, cross-references, weights, answer counts, source policy, lesson references, and progress integrity.
+- **Skills** define portable agent behavior.
+- **Certification packs** define exam metadata, domains, depth, and curriculum location.
+- **Curricula** define stages, modules, objectives, prerequisites, and mastery evidence.
+- **Lessons** define reusable teaching blueprints.
+- **Progress** persists objective evidence across conversations and models.
+- **Adaptive policy** produces explainable objective priorities and quiz slots.
+- **Source catalog** maps stable IDs to official AWS URLs and freshness metadata.
+- **Local retrieval** downloads selected pages to an ignored chunk cache and ranks chunks lexically.
+- **Schemas and validator** enforce structure and cross-references.
+- **CLI** exposes deterministic workflows without replacing conversational teaching.
 
-The validator cannot prove complete technical correctness. Independent review and current AWS documentation are still required.
+## Retrieval architecture
 
-## Runtime flow
+The committed catalog is authoritative for permitted sources. The cache is disposable and can be rebuilt.
 
-1. Select a certification pack.
-2. Load its curriculum.
-3. Read or initialize learner progress.
-4. Choose the smallest unmet objective or weak area.
-5. Load an authored lesson or generate a schema-valid blueprint.
-6. Teach one bounded segment and collect evidence.
-7. Update progress conservatively.
-8. Move to integrated scenarios, timed quizzes, and mock exams only when prerequisites are satisfied.
+```text
+sources/catalog.yaml
+  -> source-freshness
+  -> source-sync
+  -> .cache/aws-cert-docs/*.json
+  -> source-search
+  -> agent verifies claims and stores source_ids
+```
 
-## Future extension points
+The initial retriever is deliberately simple and inspectable. A future embeddings or hybrid adapter can implement the same source-ID contract.
 
-Command-line course initialization, deterministic progress updates, official-document retrieval, source freshness checks, similarity detection, an MCP or HTTP API, and a web interface.
+## Quality boundary
+
+The validator can prove structural consistency, source mapping, answer metadata, distributions, and progress arithmetic. It cannot prove that every AWS claim is technically correct. Current official documentation plus independent review remain mandatory.

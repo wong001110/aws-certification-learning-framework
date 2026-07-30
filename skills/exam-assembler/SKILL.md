@@ -1,29 +1,28 @@
 ---
 name: exam-assembler
-description: Assemble balanced quizzes and mock exams from reviewed questions using a certification blueprint.
+description: Assemble balanced adaptive quizzes and mock-exam plans from reviewed questions and certification blueprints.
 ---
 
 # Exam Assembler
 
 ## Inputs
 
-- certification pack and domain weights;
-- approved question pool;
-- target question count;
-- mode: diagnostic, learning quiz, timed mixed quiz, or mock exam;
-- optional learner weakness profile.
+- certification pack, curriculum, and official domain weights;
+- approved current question pool;
+- target count and mode;
+- optional learner progress and adaptive policy.
 
-## Assembly rules
+## Rules
 
-1. Use only approved and currently verified questions.
-2. Match domain distribution as closely as the question count permits.
-3. Respect supported response types in the certification pack.
-4. Prevent repeated scenarios, tested skills, and near-duplicate option sets.
-5. Balance correct answer positions across A-D for four-option questions.
-6. Do not use predictable answer sequences.
-7. Keep explanations hidden until submission in exam mode.
-8. Separate official exam metadata from user-selected practice settings.
+1. Use `schemas/quiz-plan.schema.json` as the planning contract.
+2. For adaptive mode, use the adaptive-quiz skill and objective evidence.
+3. For mock mode, allocate questions by official domain weights as closely as integer counts allow.
+4. Reuse only approved, fresh, objective-aligned questions.
+5. Turn gaps into explicit original-question authoring slots.
+6. Respect supported response types.
+7. Prevent duplicate scenarios and near-duplicate option sets.
+8. Balance correct answer positions when the actual question set is rendered.
+9. Hide explanations until submission in exam mode.
+10. Separate official exam metadata from user-selected practice settings.
 
-## Post-exam review
-
-Report overall score, domain performance, reasoning errors, knowledge gaps, and a focused repair plan. Do not claim that a practice score guarantees passing the real exam.
+After submission, report practice performance, reasoning errors, objective and domain gaps, and a repair plan. Never claim that a practice score guarantees passing.

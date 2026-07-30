@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Official AWS Source Catalog",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "catalog_version",
+    "verified_at",
+    "default_refresh_days",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "catalog_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "default_refresh_days": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "url",
+        "source_type",
+        "verified_at",
+        "status",
+        "tags"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{2,95}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "source_type": {
+          "enum": [
+            "exam_guide_index",
+            "exam_guide",
+            "exam_scope",
+            "service_documentation",
+            "architecture_guidance",
+            "product_overview",
+            "security_guidance",
+            "responsible_ai",
+            "rag_guidance"
+          ]
+        },
+        "certification_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{2,3}-C[0-9]{2}$"
+          }
+        },
+        "objective_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 2
+          }
+        },
+        "verified_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "refresh_days": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "critical": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "active",
+            "retiring",
+            "archived"
+          ]
+        },
+        "retrieval": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "max_bytes": {
+              "type": "integer",
+              "minimum": 1000
+            },
+            "chunk_characters": {
+              "type": "integer",
+              "minimum": 300,
+              "maximum": 5000
+            },
+            "overlap_words": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 200
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

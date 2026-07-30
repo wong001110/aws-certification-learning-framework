@@ -2,53 +2,277 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Adaptive AWS Certification Learning Progress",
   "type": "object",
-  "required": ["schema_version", "certification_id", "curriculum_version", "current_stage_id", "objective_status", "completed_lesson_ids", "weak_objectives", "history"],
+  "required": [
+    "schema_version",
+    "certification_id",
+    "curriculum_version",
+    "current_stage_id",
+    "objective_status",
+    "completed_lesson_ids",
+    "weak_objectives",
+    "history"
+  ],
   "properties": {
-    "schema_version": {"type": "integer", "minimum": 1},
-    "certification_id": {"type": "string", "pattern": "^[A-Z]{2,3}-C[0-9]{2}$"},
-    "curriculum_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"},
-    "current_stage_id": {"type": "string"},
-    "current_lesson_id": {"type": ["string", "null"]},
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "certification_id": {
+      "type": "string",
+      "pattern": "^[A-Z]{2,3}-C[0-9]{2}$"
+    },
+    "curriculum_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "current_stage_id": {
+      "type": "string"
+    },
+    "current_lesson_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "objective_status": {
       "type": "object",
       "additionalProperties": {
         "type": "object",
-        "required": ["status", "confidence", "evidence_count", "attempts", "correct"],
+        "required": [
+          "status",
+          "confidence",
+          "evidence_count",
+          "attempts",
+          "correct"
+        ],
         "properties": {
-          "status": {"enum": ["not_started", "introduced", "practicing", "proficient", "needs_review"]},
-          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
-          "evidence_count": {"type": "integer", "minimum": 0},
-          "attempts": {"type": "integer", "minimum": 0},
-          "correct": {"type": "integer", "minimum": 0},
-          "last_updated": {"type": ["string", "null"], "format": "date-time"}
+          "status": {
+            "enum": [
+              "not_started",
+              "introduced",
+              "practicing",
+              "proficient",
+              "needs_review"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "evidence_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "attempts": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "correct": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "last_updated": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "last_seen_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "next_review_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "correct_streak": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "incorrect_streak": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "evidence_types": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          }
         },
         "additionalProperties": false
       }
     },
-    "completed_lesson_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
-    "weak_objectives": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "completed_lesson_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "weak_objectives": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
     "next_recommendation": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "properties": {
-        "activity_type": {"enum": ["lesson", "comparison", "focused_quiz", "integrated_scenario", "hands_on", "timed_quiz", "mock_exam"]},
-        "objective_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
-        "reason": {"type": "string", "minLength": 5}
+        "activity_type": {
+          "enum": [
+            "lesson",
+            "comparison",
+            "focused_quiz",
+            "integrated_scenario",
+            "hands_on",
+            "timed_quiz",
+            "mock_exam"
+          ]
+        },
+        "objective_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 5
+        }
       },
-      "required": ["activity_type", "objective_ids", "reason"],
+      "required": [
+        "activity_type",
+        "objective_ids",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "quiz_summary": {
+      "type": "object",
+      "required": [
+        "total_attempts",
+        "total_correct",
+        "recent_results",
+        "last_session_at"
+      ],
+      "properties": {
+        "total_attempts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_correct": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recent_results": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "enum": [
+              "correct",
+              "incorrect",
+              "partial",
+              "skipped"
+            ]
+          }
+        },
+        "last_session_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "adaptive_state": {
+      "type": "object",
+      "properties": {
+        "last_policy_version": {
+          "type": "string"
+        },
+        "last_recommendation_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "seen_question_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
       "additionalProperties": false
     },
     "history": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["occurred_at", "activity_type", "reference_id", "result"],
+        "required": [
+          "occurred_at",
+          "activity_type",
+          "reference_id",
+          "result"
+        ],
         "properties": {
-          "occurred_at": {"type": "string", "format": "date-time"},
-          "activity_type": {"enum": ["lesson", "question", "quiz", "hands_on", "review", "mock_exam"]},
-          "reference_id": {"type": "string", "minLength": 1},
-          "result": {"enum": ["completed", "correct", "incorrect", "partial", "skipped"]},
-          "objective_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
-          "notes": {"type": "string"}
+          "occurred_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "activity_type": {
+            "enum": [
+              "lesson",
+              "question",
+              "quiz",
+              "hands_on",
+              "review",
+              "mock_exam"
+            ]
+          },
+          "reference_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "result": {
+            "enum": [
+              "completed",
+              "correct",
+              "incorrect",
+              "partial",
+              "skipped"
+            ]
+          },
+          "objective_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
         },
         "additionalProperties": false
       }

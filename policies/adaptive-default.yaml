@@ -1,0 +1,36 @@
+schema_version: 1
+policy_version: '0.4'
+weights:
+  status_gap: 0.40
+  accuracy_gap: 0.18
+  confidence_gap: 0.14
+  evidence_gap: 0.10
+  domain_weight: 0.08
+  recency: 0.10
+status_values:
+  not_started: 0.72
+  introduced: 0.64
+  practicing: 0.52
+  proficient: 0.08
+  needs_review: 1.00
+weak_objective_bonus: 0.35
+core_objective_bonus: 0.08
+evidence_target: 3
+recency_days: 21
+prerequisite_mode: strict
+max_objectives_per_session: 3
+activity_by_status:
+  not_started: lesson
+  introduced: focused_quiz
+  practicing: focused_quiz
+  proficient: focused_quiz
+  needs_review: focused_quiz
+difficulty_by_status:
+  not_started: teaching
+  introduced: teaching
+  practicing: exam
+  proficient: pressure
+  needs_review: exam
+question_type_mix:
+  multiple_choice: 0.75
+  multiple_response: 0.25

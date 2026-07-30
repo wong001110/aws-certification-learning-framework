@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Adaptive Quiz Policy",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "policy_version",
+    "weights",
+    "status_values",
+    "evidence_target",
+    "recency_days",
+    "prerequisite_mode",
+    "max_objectives_per_session",
+    "activity_by_status",
+    "difficulty_by_status",
+    "question_type_mix"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "policy_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "weights": {
+      "type": "object",
+      "required": [
+        "status_gap",
+        "accuracy_gap",
+        "confidence_gap",
+        "evidence_gap",
+        "domain_weight",
+        "recency"
+      ],
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+      }
+    },
+    "status_values": {
+      "type": "object",
+      "required": [
+        "not_started",
+        "introduced",
+        "practicing",
+        "proficient",
+        "needs_review"
+      ],
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "weak_objective_bonus": {
+      "type": "number",
+      "minimum": 0
+    },
+    "core_objective_bonus": {
+      "type": "number",
+      "minimum": 0
+    },
+    "evidence_target": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "recency_days": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "prerequisite_mode": {
+      "enum": [
+        "strict",
+        "soft"
+      ]
+    },
+    "max_objectives_per_session": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "activity_by_status": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": [
+          "lesson",
+          "comparison",
+          "focused_quiz",
+          "integrated_scenario",
+          "hands_on",
+          "timed_quiz",
+          "mock_exam"
+        ]
+      }
+    },
+    "difficulty_by_status": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": [
+          "teaching",
+          "exam",
+          "pressure"
+        ]
+      }
+    },
+    "question_type_mix": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  },
+  "additionalProperties": false
+}

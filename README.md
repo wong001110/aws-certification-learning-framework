@@ -1,43 +1,37 @@
 # AWS Certification Learning Framework
 
-An open-source, agent-compatible framework for personalized AWS certification learning, structured lessons, original exam-style question generation, answer review, and adaptive mock exams.
+An open-source, agent-compatible framework for personalized AWS certification learning, structured lessons, adaptive quizzes, original exam-style question generation, official-source retrieval, answer review, and mock-exam planning.
 
 > [!IMPORTANT]
 > This is an independent, unofficial learning project. It is not affiliated with, endorsed by, or sponsored by Amazon Web Services. AWS, Amazon Web Services, and related marks are trademarks of Amazon.com, Inc. or its affiliates.
 >
 > This repository does **not** contain actual certification exam questions, exam dumps, or reconstructed confidential exam content. All practice questions and lessons must be independently authored and grounded in public AWS documentation.
 
-## Current version: v0.2
+## Current version: v0.4
 
-The framework still runs primarily inside an AI conversation. Version 0.2 adds portable curricula, lesson blueprints, and progress files so different agents can continue the same learning path without relying only on chat memory.
+The default learning surface is still an AI conversation. Version 0.4 adds the v0.3 command-line workflow, adaptive quiz planning, evidence-based progress updates, a versioned official AWS source catalog, source freshness reporting, and an optional local Retrieval-Augmented Generation (RAG) retrieval cache.
 
 ```text
 GitHub repository
-  -> AI agent loads skill + certification pack
-  -> agent loads curriculum + learner progress
-  -> bounded conversational lesson or quiz
+  -> AI agent loads skills + certification pack + curriculum
+  -> progress engine recommends the next objective
+  -> lesson, focused quiz, or mock-exam plan
+  -> official AWS source retrieval and verification
   -> evidence-based progress update
-  -> next adaptive activity
 ```
 
-The framework separates reusable behavior from certification-specific knowledge:
+## v0.4 capabilities
 
-```text
-Universal skill + Certification pack + Curriculum + Learner progress
-= Personalized certification tutor
-```
-
-## v0.2 capabilities
-
-- Select a suitable AWS certification based on a learner's role and background.
-- Build a staged plan from a versioned curriculum and official exam blueprint.
-- Teach bounded interactive lessons and explain acronyms on first use.
-- Persist progress by stable learning objective rather than elapsed time.
-- Generate lesson blueprints when a curriculum module has no authored lesson.
-- Generate original questions at foundational, associate, professional, or specialty depth.
-- Review technical accuracy, answer uniqueness, distractor quality, and source grounding.
-- Assemble balanced quizzes and mock exams.
-- Validate certification packs, curricula, lessons, progress files, and questions in continuous integration.
+- Select a suitable AWS certification based on role and background.
+- Teach from versioned curricula and reusable lesson blueprints.
+- Persist progress by stable learning objective.
+- Prioritize weak or overdue objectives using accuracy, confidence, evidence, prerequisites, recency, and exam-domain weight.
+- Generate adaptive, focused, and weighted mock-exam plans.
+- Record attempts and update spaced-review dates conservatively.
+- Generate and review original questions at the selected certification depth.
+- Maintain a catalog of official AWS sources with verification dates and refresh intervals.
+- Optionally cache and search selected AWS documentation locally without committing copied documentation to Git.
+- Validate packs, curricula, lessons, progress, questions, source metadata, attempts, and quiz plans in continuous integration.
 
 ## Included reference packs
 
@@ -49,84 +43,124 @@ Universal skill + Certification pack + Curriculum + Learner progress
 | AWS Certified Developer - Associate (DVA-C02) | Associate | Yes | Yes |
 | AWS Certified Data Engineer - Associate (DEA-C01) | Associate | Yes | Yes |
 
-The registry lists additional active certification families so contributors can add packs without changing the core skills.
-
-## Quick start
+## Installation
 
 ```bash
 git clone https://github.com/wong001110/aws-certification-learning-framework.git
 cd aws-certification-learning-framework
+python -m venv .venv
 ```
 
-Open the directory with an AI agent that can read local files.
+Activate the environment, then install:
 
-### Continue a structured SAA-C03 course
+```bash
+python -m pip install --no-build-isolation -e '.[dev]'
+```
+
+This installs the `aws-cert` command. Learners using an AI agent that can read repository files may continue using the project without invoking the CLI directly.
+
+## Conversational use
 
 ```text
 Read AGENTS.md, then load:
 - skills/learning-planner/SKILL.md
 - skills/tutor/SKILL.md
+- skills/adaptive-quiz/SKILL.md
 - skills/progress-coach/SKILL.md
+- skills/source-retriever/SKILL.md
 - certifications/associate/SAA-C03/certification.yaml
 - certifications/associate/SAA-C03/curriculum.yaml
 - examples/learner-profile.yaml
 - examples/progress/saa-c03-example.yaml
 
 Continue the course in Traditional Chinese.
-Use the curriculum objective IDs as progress keys.
 Explain every acronym on first use.
-Teach one bounded lesson segment at a time.
-Do not reveal quiz answers until I respond.
-Update the progress file after meaningful evidence.
+Use official source IDs and verify current AWS claims.
+Teach one bounded segment at a time.
+Do not reveal quiz answers before I respond.
+Update progress only after meaningful evidence.
 ```
 
-### Start with a clean progress file
+## CLI workflow
 
-Copy the templates:
+Create a clean progress file:
 
 ```bash
-cp examples/learner-profile.yaml learner-profile.yaml
-cp templates/progress.yaml progress.yaml
+aws-cert init-progress --certification SAA-C03 --output progress.yaml
 ```
 
-Then change the certification ID, curriculum version, language, and experience levels.
-
-### Generate a structured lesson
-
-```text
-Read AGENTS.md and skills/lesson-author/SKILL.md.
-Load the DVA-C02 certification pack and curriculum.
-Create a lesson blueprint for one current-stage module.
-Return YAML conforming to schemas/lesson.schema.json.
-Use current official AWS sources.
-```
-
-### Generate original practice questions
-
-```text
-Read AGENTS.md and skills/question-author/SKILL.md.
-Load certifications/foundational/AIF-C01/certification.yaml.
-Generate five original exam-level questions as JSON conforming to schemas/question.schema.json.
-Use only public AWS sources. Do not copy, reconstruct, or closely paraphrase existing exam questions.
-```
-
-### Review repository content
-
-```text
-Read skills/question-reviewer/SKILL.md and rubrics/universal-question-quality.yaml.
-Review the structured questions and lessons.
-Reject ambiguous answers, weak distractors, unsupported technical claims, or incorrect certification depth.
-```
-
-## Local validation
-
-Requirements: Python 3.11 or newer.
+Recommend the next activities:
 
 ```bash
-python -m pip install --no-build-isolation -e '.[dev]'
+aws-cert recommend \
+  --certification SAA-C03 \
+  --progress progress.yaml
+```
+
+Create an adaptive quiz plan:
+
+```bash
+aws-cert quiz-plan \
+  --certification SAA-C03 \
+  --mode adaptive \
+  --progress progress.yaml \
+  --count 10 \
+  --output quiz-plan.yaml
+```
+
+Create a weighted mock-exam plan:
+
+```bash
+aws-cert quiz-plan \
+  --certification SAA-C03 \
+  --mode mock \
+  --count 65 \
+  --time-limit 130 \
+  --output mock-plan.yaml
+```
+
+Apply an attempt to progress:
+
+```bash
+aws-cert record-attempt \
+  --certification SAA-C03 \
+  --progress progress.yaml \
+  --attempt attempt.yaml
+```
+
+See [docs/adaptive-quizzes.md](docs/adaptive-quizzes.md).
+
+## Official-source retrieval
+
+Check source freshness:
+
+```bash
+aws-cert source-freshness --fail-on-stale
+```
+
+Synchronize only the documentation needed for a task:
+
+```bash
+aws-cert source-sync --source-id rds-multi-az
+```
+
+Search the ignored local cache:
+
+```bash
+aws-cert source-search \
+  "automatic database failover read replica" \
+  --certification SAA-C03
+```
+
+The repository commits only `sources/catalog.yaml`. Retrieved text is stored under `.cache/aws-cert-docs/`, which is ignored by Git. Network access is optional for structural validation. See [docs/official-source-retrieval.md](docs/official-source-retrieval.md).
+
+## Validation
+
+```bash
 python -m validator.validate
 python -m pytest
 python -m ruff check validator tests
+python -m validator source-freshness --fail-on-stale
 ```
 
 Or:
@@ -138,41 +172,43 @@ make check
 ## Repository layout
 
 ```text
-skills/           Reusable agent behavior, including lesson authoring
-certifications/   Versioned certification packs, curricula, lessons, and registry
-schemas/          Machine-readable question, curriculum, lesson, and progress contracts
-rubrics/          Review and difficulty standards
-examples/         Learner profile, progress state, and original example questions
-templates/        Starting files for lessons and progress
-validator/        Deterministic content and cross-reference validation
-tests/            Validator regression tests
-docs/             Architecture, source policy, lesson, and contribution guides
-.github/           Continuous integration
+skills/           Portable agent behavior
+certifications/   Certification packs, curricula, and lessons
+policies/         Adaptive learning policy
+sources/          Official AWS source metadata catalog
+schemas/          Machine-readable content contracts
+examples/         Questions, progress, attempts, and quiz plans
+validator/        CLI, adaptive engine, retrieval, and validation
+templates/        Starting structured files
+docs/             Architecture and contributor guidance
+tests/            Regression tests
+.github/           Continuous integration and freshness checks
 ```
 
 ## Design principles
 
-1. **Official-source grounding**: technical facts must be verified against public AWS documentation.
+1. **Official-source grounding**: current technical claims resolve to cataloged public AWS sources.
 2. **Original content only**: no dumps, reconstructed questions, or near-copy paraphrases.
-3. **Curriculum as source of truth**: objective IDs control sequencing and progress.
-4. **Evidence-based mastery**: one correct guess does not equal proficiency.
-5. **Depth, not keyword matching**: questions and lessons test the selected certification's reasoning depth.
-6. **Plausible alternatives**: learners must understand service boundaries and tradeoffs.
-7. **Model independence**: skills are portable instructions rather than vendor-specific prompts.
-8. **Structured output first**: content can be rendered in chat, a CLI, or a future web application.
-9. **Human-review friendly**: lessons and questions include sources, evidence, and review metadata.
+3. **Curriculum as source of truth**: stable objective IDs control sequencing and progress.
+4. **Evidence-based mastery**: one correct guess is not proficiency.
+5. **Adaptive but explainable**: recommendations expose their scoring reasons and prerequisite blockers.
+6. **Depth, not keyword matching**: questions test the reasoning depth of the selected certification.
+7. **Local-first retrieval**: downloaded documentation is optional, inspectable, and uncommitted.
+8. **Model independence**: skills and structured data can be used by different AI agents.
+9. **Human-review friendly**: all approved content preserves objective IDs, source IDs, explanations, and review metadata.
 
 ## Roadmap
 
-- **v0.1**: conversational skill framework, three reference packs, question schemas, validator, and CI.
-- **v0.2**: structured curricula and lessons, adaptive progress files, five reference packs.
-- **v0.3**: command-line workflow for course initialization, validation, progress updates, question review, and mock-exam assembly.
-- **v0.4**: official-document retrieval and source freshness checks.
+- **v0.1**: conversational skills, three packs, question schema, validator, and CI.
+- **v0.2**: structured curricula, lessons, progress files, and five packs.
+- **v0.3**: CLI, adaptive recommendations, attempt recording, and quiz planning. Included in v0.4.
+- **v0.4**: official-source catalog, freshness checks, local retrieval cache, and source-aware validation.
+- **v0.5**: optional embeddings or hybrid retrieval adapters and richer question-pool analytics.
 - **v1.0**: optional MCP/API service and web practice interface.
 
 ## Contributing
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md), [docs/source-policy.md](docs/source-policy.md), [docs/adding-a-certification.md](docs/adding-a-certification.md), and [docs/lesson-authoring.md](docs/lesson-authoring.md) before submitting content.
+Read [CONTRIBUTING.md](CONTRIBUTING.md), [docs/source-policy.md](docs/source-policy.md), [docs/adding-a-certification.md](docs/adding-a-certification.md), [docs/lesson-authoring.md](docs/lesson-authoring.md), and [docs/official-source-retrieval.md](docs/official-source-retrieval.md).
 
 ## License
 

@@ -1,0 +1,246 @@
+schema_version: 1
+catalog_version: '0.4'
+verified_at: '2026-07-30'
+default_refresh_days: 180
+sources:
+  - id: aws-cert-exam-guides-index
+    title: AWS Certification Exam Guides
+    url: https://docs.aws.amazon.com/aws-certification/latest/examguides/aws-certification-exam-guides.html
+    source_type: exam_guide_index
+    verified_at: '2026-07-30'
+    refresh_days: 90
+    critical: true
+    status: active
+    tags: [certification, exam-guides, registry]
+    retrieval: {enabled: true, max_bytes: 2000000, chunk_characters: 1400, overlap_words: 35}
+
+  - id: clf-c02-exam-guide
+    title: AWS Certified Cloud Practitioner exam guide
+    url: https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html
+    source_type: exam_guide
+    certification_ids: [CLF-C02]
+    objective_ids: [clf-exam-map]
+    verified_at: '2026-07-30'
+    refresh_days: 90
+    critical: true
+    status: active
+    tags: [clf-c02, exam-guide, cloud-foundations]
+    retrieval: {enabled: true, max_bytes: 2500000, chunk_characters: 1400, overlap_words: 35}
+  - id: aws-cloud-computing-overview
+    title: What is cloud computing?
+    url: https://aws.amazon.com/what-is-cloud-computing/
+    source_type: product_overview
+    certification_ids: [CLF-C02]
+    objective_ids: [clf-cloud-value]
+    verified_at: '2026-07-30'
+    refresh_days: 365
+    status: active
+    tags: [cloud, elasticity, agility, cloud-value]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+
+  - id: aif-c01-exam-guide
+    title: AWS Certified AI Practitioner exam guide
+    url: https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html
+    source_type: exam_guide
+    certification_ids: [AIF-C01]
+    objective_ids: [aif-exam-map]
+    verified_at: '2026-07-30'
+    refresh_days: 90
+    critical: true
+    status: active
+    tags: [aif-c01, exam-guide, artificial-intelligence, generative-ai]
+    retrieval: {enabled: true, max_bytes: 2500000, chunk_characters: 1400, overlap_words: 35}
+  - id: aws-ai-overview
+    title: What is artificial intelligence?
+    url: https://aws.amazon.com/what-is/artificial-intelligence/
+    source_type: product_overview
+    certification_ids: [AIF-C01]
+    objective_ids: [aif-ai-ml-basics, aif-generative-ai]
+    verified_at: '2026-07-30'
+    refresh_days: 365
+    status: active
+    tags: [artificial-intelligence, machine-learning, generative-ai]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+  - id: aws-responsible-ai
+    title: Responsible AI at AWS
+    url: https://aws.amazon.com/ai/responsible-ai/
+    source_type: responsible_ai
+    certification_ids: [AIF-C01]
+    objective_ids: [aif-responsible-ai]
+    verified_at: '2026-07-30'
+    refresh_days: 180
+    status: active
+    tags: [responsible-ai, fairness, explainability, privacy, safety]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+
+  - id: saa-c03-exam-guide
+    title: AWS Certified Solutions Architect - Associate exam guide
+    url: https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html
+    source_type: exam_guide
+    certification_ids: [SAA-C03]
+    objective_ids: [saa-exam-map]
+    verified_at: '2026-07-30'
+    refresh_days: 90
+    critical: true
+    status: active
+    tags: [saa-c03, exam-guide, architecture, well-architected]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+  - id: saa-c03-technologies-concepts
+    title: SAA-C03 technologies and concepts
+    url: https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/saa-technologies-concepts.html
+    source_type: exam_scope
+    certification_ids: [SAA-C03]
+    verified_at: '2026-07-30'
+    refresh_days: 90
+    critical: true
+    status: active
+    tags: [saa-c03, technologies, concepts, scope]
+    retrieval: {enabled: true, max_bytes: 2000000, chunk_characters: 1400, overlap_words: 35}
+  - id: saa-c03-in-scope-services
+    title: SAA-C03 in-scope AWS services
+    url: https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/saa-03-in-scope-services.html
+    source_type: exam_scope
+    certification_ids: [SAA-C03]
+    verified_at: '2026-07-30'
+    refresh_days: 90
+    critical: true
+    status: active
+    tags: [saa-c03, in-scope, services]
+    retrieval: {enabled: true, max_bytes: 2500000, chunk_characters: 1400, overlap_words: 35}
+  - id: saa-c03-out-of-scope-services
+    title: SAA-C03 out-of-scope AWS services
+    url: https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/saa-03-out-of-scope-services.html
+    source_type: exam_scope
+    certification_ids: [SAA-C03]
+    verified_at: '2026-07-30'
+    refresh_days: 90
+    status: active
+    tags: [saa-c03, out-of-scope, services]
+    retrieval: {enabled: true, max_bytes: 2000000, chunk_characters: 1400, overlap_words: 35}
+  - id: aws-well-architected-framework
+    title: AWS Well-Architected Framework
+    url: https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
+    source_type: architecture_guidance
+    certification_ids: [SAA-C03]
+    objective_ids: [saa-global-infrastructure, saa-service-comparisons, saa-integrated-architecture]
+    verified_at: '2026-07-30'
+    refresh_days: 180
+    critical: true
+    status: active
+    tags: [well-architected, security, reliability, performance, cost, sustainability, operations]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+  - id: rds-multi-az
+    title: Amazon RDS Multi-AZ deployments
+    url: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
+    source_type: service_documentation
+    certification_ids: [SAA-C03]
+    objective_ids: [saa-resilient-data]
+    verified_at: '2026-07-30'
+    refresh_days: 180
+    status: active
+    tags: [rds, multi-az, availability, failover, database]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+  - id: rds-read-replicas
+    title: Working with DB instance read replicas
+    url: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html
+    source_type: service_documentation
+    certification_ids: [SAA-C03]
+    objective_ids: [saa-resilient-data, saa-database-selection]
+    verified_at: '2026-07-30'
+    refresh_days: 180
+    status: active
+    tags: [rds, read-replica, scaling, replication]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+
+  - id: dva-c02-exam-guide
+    title: AWS Certified Developer - Associate exam guide
+    url: https://docs.aws.amazon.com/aws-certification/latest/developer-associate-02/developer-associate-02.html
+    source_type: exam_guide
+    certification_ids: [DVA-C02]
+    objective_ids: [dva-exam-map]
+    verified_at: '2026-07-30'
+    refresh_days: 90
+    critical: true
+    status: active
+    tags: [dva-c02, exam-guide, development]
+    retrieval: {enabled: true, max_bytes: 2500000, chunk_characters: 1400, overlap_words: 35}
+  - id: aws-lambda-developer-guide
+    title: AWS Lambda Developer Guide
+    url: https://docs.aws.amazon.com/lambda/latest/dg/welcome.html
+    source_type: service_documentation
+    certification_ids: [DVA-C02]
+    objective_ids: [dva-lambda]
+    verified_at: '2026-07-30'
+    refresh_days: 180
+    status: active
+    tags: [lambda, serverless, events, functions]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+  - id: amazon-sqs-developer-guide
+    title: Amazon SQS Developer Guide
+    url: https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html
+    source_type: service_documentation
+    certification_ids: [DVA-C02, SAA-C03]
+    objective_ids: [dva-app-integration, saa-decoupling]
+    verified_at: '2026-07-30'
+    refresh_days: 180
+    status: active
+    tags: [sqs, queue, decoupling, retries, messaging]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+
+  - id: dea-c01-exam-guide
+    title: AWS Certified Data Engineer - Associate exam guide
+    url: https://docs.aws.amazon.com/aws-certification/latest/data-engineer-associate-01/data-engineer-associate-01.html
+    source_type: exam_guide
+    certification_ids: [DEA-C01]
+    objective_ids: [dea-exam-map]
+    verified_at: '2026-07-30'
+    refresh_days: 90
+    critical: true
+    status: active
+    tags: [dea-c01, exam-guide, data-engineering]
+    retrieval: {enabled: true, max_bytes: 2500000, chunk_characters: 1400, overlap_words: 35}
+  - id: amazon-kinesis-data-streams-guide
+    title: Amazon Kinesis Data Streams Developer Guide
+    url: https://docs.aws.amazon.com/streams/latest/dev/introduction.html
+    source_type: service_documentation
+    certification_ids: [DEA-C01]
+    objective_ids: [dea-ingestion-patterns]
+    verified_at: '2026-07-30'
+    refresh_days: 180
+    status: active
+    tags: [kinesis, streaming, ingestion, replay, ordering]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+  - id: aws-glue-developer-guide
+    title: AWS Glue Developer Guide
+    url: https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html
+    source_type: service_documentation
+    certification_ids: [DEA-C01]
+    objective_ids: [dea-transformation, dea-orchestration]
+    verified_at: '2026-07-30'
+    refresh_days: 180
+    status: active
+    tags: [glue, etl, data-catalog, transformation, orchestration]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+
+  - id: bedrock-knowledge-bases
+    title: Retrieve data and generate AI responses with Amazon Bedrock Knowledge Bases
+    url: https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html
+    source_type: rag_guidance
+    certification_ids: [AIF-C01]
+    objective_ids: [aif-rag-customization-evaluation]
+    verified_at: '2026-07-30'
+    refresh_days: 120
+    status: active
+    tags: [bedrock, knowledge-bases, rag, retrieval, citations]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}
+  - id: bedrock-knowledge-base-retrieval
+    title: Retrieving information with Amazon Bedrock Knowledge Bases
+    url: https://docs.aws.amazon.com/bedrock/latest/userguide/kb-how-retrieval.html
+    source_type: rag_guidance
+    certification_ids: [AIF-C01]
+    objective_ids: [aif-rag-customization-evaluation]
+    verified_at: '2026-07-30'
+    refresh_days: 120
+    status: active
+    tags: [bedrock, retrieve, retrieve-and-generate, rag, citations]
+    retrieval: {enabled: true, max_bytes: 3000000, chunk_characters: 1400, overlap_words: 35}

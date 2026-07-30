@@ -4,6 +4,7 @@ curriculum_version: '0.2'
 title: DVA-C02 Structured Conversational Curriculum
 description: A structured developer curriculum for building securing deploying debugging and optimizing AWS applications.
 estimated_hours: 52
+source_ids: [dva-c02-exam-guide]
 stages:
 - {id: stage-01-orientation, order: 1, title: Orientation and baseline, kind: orientation, description: Orientation and baseline, module_ids: [dva-orientation], completion: {required_objective_status: introduced, minimum_evidence_count: 1}}
 - {id: stage-02-foundations, order: 2, title: Developer foundations, kind: foundations, description: Developer foundations, module_ids: [dva-foundations], completion: {required_objective_status: proficient, minimum_evidence_count: 2}}

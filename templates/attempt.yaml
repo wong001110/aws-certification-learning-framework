@@ -1,0 +1,14 @@
+schema_version: 1
+id: replace-with-attempt-id
+certification_id: SAA-C03
+occurred_at: '2026-07-30T00:00:00+08:00'
+activity_type: question
+session_id: null
+question_id: null
+result: partial
+objective_ids: [replace-with-objective-id]
+domain_ids: [replace-with-domain-id]
+confidence_before: 0.5
+confidence_after: 0.5
+duration_seconds: 0
+notes: Replace with concise evidence notes.
