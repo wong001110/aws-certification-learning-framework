@@ -4,12 +4,20 @@
   "type": "object",
   "required": ["certification_id", "language", "experience", "preferences"],
   "properties": {
-    "certification_id": {"type": "string"},
+    "certification_id": {"type": "string", "pattern": "^[A-Z]{2,3}-C[0-9]{2}$"},
+    "curriculum_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+$"},
     "language": {"type": "string"},
-    "experience": {"type": "object", "additionalProperties": {"enum": ["none", "beginner", "intermediate", "advanced"]}},
+    "experience": {
+      "type": "object",
+      "additionalProperties": {"enum": ["none", "beginner", "intermediate", "advanced"]}
+    },
     "preferences": {"type": "object", "additionalProperties": true},
+    "progress_file": {"type": "string", "minLength": 3},
     "weak_domains": {"type": "array", "items": {"type": "string"}},
-    "objective_status": {"type": "object", "additionalProperties": {"enum": ["not_started", "introduced", "practicing", "proficient", "needs_review"]}}
+    "objective_status": {
+      "type": "object",
+      "additionalProperties": {"enum": ["not_started", "introduced", "practicing", "proficient", "needs_review"]}
+    }
   },
   "additionalProperties": false
 }
