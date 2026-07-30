@@ -1,0 +1,45 @@
+schema_version: 1
+id: batch-and-streaming-ingestion
+certification_id: DEA-C01
+curriculum_version: '0.2'
+title: Batch and streaming data ingestion
+objective_ids: [dea-ingestion-patterns, dea-orchestration]
+prerequisite_lesson_ids: []
+estimated_minutes: 60
+delivery:
+- type: orientation
+  title: Workload shape
+  instructions: Begin with two producers, a nightly file export and a continuous event stream, and ask which workload characteristics differ.
+- type: explanation
+  title: Ingestion dimensions
+  instructions: Explain volume, velocity, ordering, latency, replay, schema, and failure-recovery requirements as selection dimensions.
+- type: comparison
+  title: Batch and streaming patterns
+  instructions: Compare scheduled object ingestion, managed streaming, delivery streams, and message queues without treating them as interchangeable.
+- type: worked_example
+  title: Dual-path analytics pipeline
+  instructions: Design an original pipeline that accepts historical files and near-real-time events into governed storage and downstream processing.
+- type: hands_on
+  title: Pipeline contract
+  instructions: Ask the learner to define source, destination, partitioning, retry, duplicate handling, monitoring, and data-quality checks.
+- type: knowledge_check
+  title: Choose by constraints
+  instructions: Present latency, ordering, replay, and operational-overhead constraints and ask the learner to justify an ingestion pattern.
+  expected_response: The learner selects based on workload characteristics and explicitly addresses failure and replay behavior.
+- type: summary
+  title: Data engineer boundary
+  instructions: Summarize ingestion selection and orchestration without requiring programming-language-specific syntax.
+knowledge_checks:
+- id: dea-ingestion-check-1
+  type: comparison
+  prompt: What two requirements most clearly distinguish a continuous streaming workload from a nightly batch import?
+  evidence: [Latency or continuous arrival, Ordering replay or sustained throughput]
+- id: dea-ingestion-check-2
+  type: scenario
+  prompt: A pipeline must replay retained events after fixing a transformation bug. What ingestion capability is decisive?
+  evidence: [Retained records, Ability to read from an earlier position or checkpoint]
+sources:
+- {title: AWS Certified Data Engineer - Associate exam guide, url: 'https://docs.aws.amazon.com/aws-certification/latest/data-engineer-associate-01/data-engineer-associate-01.html', accessed_at: '2026-07-30'}
+- {title: Amazon Kinesis Data Streams Developer Guide, url: 'https://docs.aws.amazon.com/streams/latest/dev/introduction.html', accessed_at: '2026-07-30'}
+- {title: AWS Glue Developer Guide, url: 'https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html', accessed_at: '2026-07-30'}
+review: {status: approved, verified_at: '2026-07-30', notes: Original data-engineering lesson blueprint.}
