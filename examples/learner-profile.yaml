@@ -1,4 +1,5 @@
 certification_id: SAA-C03
+curriculum_version: '0.2'
 language: zh-TW
 experience:
   web_frontend: intermediate
@@ -13,7 +14,6 @@ preferences:
   randomize_answer_positions: true
   question_language: zh-TW
   explanation_language: zh-TW
-weak_domains:
-  - secure_architectures
-  - resilient_architectures
+progress_file: examples/progress/saa-c03-example.yaml
+weak_domains: [secure_architectures, resilient_architectures]
 objective_status: {}
