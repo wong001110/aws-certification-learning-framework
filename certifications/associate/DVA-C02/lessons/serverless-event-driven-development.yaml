@@ -1,0 +1,27 @@
+schema_version: 1
+id: serverless-event-driven-development
+certification_id: DVA-C02
+curriculum_version: '0.2'
+title: Serverless event-driven application development
+objective_ids: [dva-sdk-cli, dva-lambda, dva-app-integration]
+prerequisite_lesson_ids: []
+estimated_minutes: 60
+delivery:
+- {type: orientation, title: Request and event paths, instructions: Start from a web application that performs a slow background task and ask why doing all work inside the request path creates reliability and latency problems.}
+- {type: explanation, title: Function and event model, instructions: Explain AWS Lambda execution event sources asynchronous work retries and idempotency at developer-associate depth.}
+- {type: comparison, title: Queue topic and direct invocation, instructions: Compare direct invocation Amazon SQS queues and Amazon SNS topics by coupling buffering fan-out and failure behavior.}
+- {type: worked_example, title: Order processing flow, instructions: Design an original order-processing flow where the API records the request queues background work and handles retry-safe processing.}
+- {type: hands_on, title: Implementation sketch, instructions: Ask the learner to outline handler responsibilities IAM permissions idempotency key handling and failure logging without language-specific syntax.}
+- type: knowledge_check
+  title: Failure behavior
+  instructions: Present duplicate delivery and downstream throttling conditions and ask the learner to explain how the design remains safe.
+  expected_response: The learner mentions idempotent processing buffering retries and least-privilege access.
+- {type: summary, title: Developer exam boundary, instructions: Summarize application-level implementation choices without drifting into enterprise architecture or network design.}
+knowledge_checks:
+- {id: dva-serverless-check-1, type: comparison, prompt: When is an Amazon SQS queue a better integration choice than directly invoking a downstream function?, evidence: [Need for buffering or decoupling, Independent retry or throughput control]}
+- {id: dva-serverless-check-2, type: scenario, prompt: An event can be delivered more than once. What application property prevents duplicate business effects?, evidence: [Idempotent processing, Stable request or event identifier]}
+sources:
+- {title: AWS Certified Developer - Associate exam guide, url: 'https://docs.aws.amazon.com/aws-certification/latest/developer-associate-02/developer-associate-02.html', accessed_at: '2026-07-30'}
+- {title: AWS Lambda Developer Guide, url: 'https://docs.aws.amazon.com/lambda/latest/dg/welcome.html', accessed_at: '2026-07-30'}
+- {title: Amazon SQS Developer Guide, url: 'https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html', accessed_at: '2026-07-30'}
+review: {status: approved, verified_at: '2026-07-30', notes: Original developer-focused lesson blueprint.}
