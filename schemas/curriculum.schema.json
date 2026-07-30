@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AWS Certification Curriculum",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "certification_id",
+    "curriculum_version",
+    "title",
+    "stages",
+    "modules",
+    "objectives",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "certification_id": {
+      "type": "string",
+      "pattern": "^[A-Z]{2,3}-C[0-9]{2}$"
+    },
+    "curriculum_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10
+    },
+    "estimated_hours": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "order",
+          "title",
+          "kind",
+          "module_ids",
+          "completion"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"
+          },
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 3
+          },
+          "kind": {
+            "enum": [
+              "orientation",
+              "foundations",
+              "domain",
+              "comparison",
+              "integration",
+              "repair",
+              "timed_quiz",
+              "mock_exam"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "module_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "completion": {
+            "type": "object",
+            "required": [
+              "required_objective_status"
+            ],
+            "properties": {
+              "required_objective_status": {
+                "enum": [
+                  "introduced",
+                  "practicing",
+                  "proficient"
+                ]
+              },
+              "minimum_quiz_accuracy": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "minimum_evidence_count": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "modules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "domain_ids",
+          "objective_ids",
+          "lesson_paths"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 3
+          },
+          "description": {
+            "type": "string"
+          },
+          "domain_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "objective_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "prerequisite_module_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "lesson_paths": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 3
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "objectives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "domain_ids",
+          "importance",
+          "mastery_evidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{2,95}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 5
+          },
+          "domain_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "importance": {
+            "enum": [
+              "core",
+              "supporting"
+            ]
+          },
+          "prerequisite_objective_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "mastery_evidence": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "explain",
+                "compare",
+                "apply",
+                "troubleshoot",
+                "hands_on",
+                "timed_question",
+                "integrated_scenario"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "url",
+          "accessed_at"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 3
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "accessed_at": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
