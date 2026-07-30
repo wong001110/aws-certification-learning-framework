@@ -1,0 +1,31 @@
+schema_version: 1
+id: cloud-value-and-elasticity
+certification_id: CLF-C02
+curriculum_version: '0.2'
+title: Cloud value, elasticity, and variable demand
+objective_ids: [clf-cloud-value]
+prerequisite_lesson_ids: []
+estimated_minutes: 35
+delivery:
+- {type: orientation, title: Business problem, instructions: Start with a variable-traffic business example and ask what is wasteful about sizing fixed hardware for peak demand.}
+- {type: explanation, title: Elasticity and agility, instructions: Explain elasticity scalability agility and economies of scale in plain language at conceptual depth.}
+- {type: comparison, title: Cloud value boundaries, instructions: Contrast elasticity with high availability fault tolerance and simple cost reduction.}
+- {type: worked_example, title: Campaign workload, instructions: Walk through a campaign workload that scales up temporarily and returns to a small baseline.}
+- type: knowledge_check
+  title: Apply the concept
+  instructions: Ask the learner to select the cloud benefit that best addresses a new variable-demand scenario and explain the decisive clue.
+  expected_response: The learner identifies elasticity and connects it to matching capacity with demand.
+- {type: summary, title: Exam boundary, instructions: Summarize the distinction between elasticity scalability agility and economies of scale at CLF-C02 depth.}
+knowledge_checks:
+- id: clf-cloud-value-check-1
+  type: free_response
+  prompt: Why is elasticity a better fit than permanently buying peak capacity for a seasonal workload?
+  evidence: [Connects capacity to changing demand, Mentions reduced idle resources or cost exposure]
+- id: clf-cloud-value-check-2
+  type: comparison
+  prompt: Explain one difference between elasticity and high availability.
+  evidence: [Elasticity concerns changing capacity, High availability concerns continued service during failures]
+sources:
+- {title: AWS Certified Cloud Practitioner exam guide, url: 'https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html', accessed_at: '2026-07-30'}
+- {title: What is cloud computing?, url: 'https://aws.amazon.com/what-is-cloud-computing/', accessed_at: '2026-07-30'}
+review: {status: approved, verified_at: '2026-07-30', notes: Original lesson blueprint for a foundational cloud-value objective.}
