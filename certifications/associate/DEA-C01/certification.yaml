@@ -1,0 +1,27 @@
+schema_version: 1
+certification:
+  id: DEA-C01
+  name: AWS Certified Data Engineer - Associate
+  level: associate
+  role_focus: data_engineering
+  status: active
+  verified_at: '2026-07-30'
+source:
+  exam_guide: https://docs.aws.amazon.com/aws-certification/latest/data-engineer-associate-01/data-engineer-associate-01.html
+candidate:
+  recommended_exposure: Equivalent of 2–3 years of data engineering experience and at least 1–2 years of hands-on experience with AWS services.
+  implementation_expected: true
+question_types: [multiple_choice, multiple_response]
+scoring:
+  passing_scaled_score: 720
+domains:
+- {id: data_ingestion_and_transformation, name: Data Ingestion and Transformation, weight: 34}
+- {id: data_store_management, name: Data Store Management, weight: 26}
+- {id: data_operations_and_support, name: Data Operations and Support, weight: 22}
+- {id: data_security_and_governance, name: Data Security and Governance, weight: 18}
+depth_profile: associate
+question_patterns: [pipeline_design, ingestion_selection, transformation_and_orchestration, data_store_selection, operations_and_quality, security_and_governance]
+curriculum:
+  path: certifications/associate/DEA-C01/curriculum.yaml
+  version: '0.2'
+out_of_scope_emphasis: [machine_learning_training_and_inference, language_specific_syntax, business_conclusion_analysis]
