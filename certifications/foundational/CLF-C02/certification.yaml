@@ -5,45 +5,23 @@ certification:
   level: foundational
   role_focus: cloud_fundamentals
   status: active
-  verified_at: "2026-07-30"
-
+  verified_at: '2026-07-30'
 source:
   exam_guide: https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html
-
 candidate:
   recommended_exposure: Up to 6 months of exposure to AWS Cloud design, implementation, or operations.
   implementation_expected: false
-
-question_types:
-  - multiple_choice
-  - multiple_response
-
+question_types: [multiple_choice, multiple_response]
 scoring:
   passing_scaled_score: 700
-
 domains:
-  - id: cloud_concepts
-    name: Cloud Concepts
-    weight: 24
-  - id: security_and_compliance
-    name: Security and Compliance
-    weight: 30
-  - id: cloud_technology_and_services
-    name: Cloud Technology and Services
-    weight: 34
-  - id: billing_pricing_and_support
-    name: Billing, Pricing, and Support
-    weight: 12
-
+- {id: cloud_concepts, name: Cloud Concepts, weight: 24}
+- {id: security_and_compliance, name: Security and Compliance, weight: 30}
+- {id: cloud_technology_and_services, name: Cloud Technology and Services, weight: 34}
+- {id: billing_pricing_and_support, name: 'Billing, Pricing, and Support', weight: 12}
 depth_profile: foundational
-question_patterns:
-  - concept_recognition
-  - service_use_case_selection
-  - shared_responsibility
-  - cloud_value
-  - security_and_cost_awareness
-out_of_scope_emphasis:
-  - coding
-  - architecture_design
-  - troubleshooting
-  - implementation
+question_patterns: [concept_recognition, service_use_case_selection, shared_responsibility, cloud_value, security_and_cost_awareness]
+curriculum:
+  path: certifications/foundational/CLF-C02/curriculum.yaml
+  version: '0.2'
+out_of_scope_emphasis: [coding, architecture_design, troubleshooting, implementation]
