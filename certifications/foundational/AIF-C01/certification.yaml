@@ -5,51 +5,24 @@ certification:
   level: foundational
   role_focus: ai_and_ml_fundamentals
   status: active
-  verified_at: "2026-07-30"
-
+  verified_at: '2026-07-30'
 source:
   exam_guide: https://docs.aws.amazon.com/aws-certification/latest/ai-practitioner-01/ai-practitioner-01.html
-
 candidate:
   recommended_exposure: Up to 6 months of exposure to AI and ML technologies on AWS.
   implementation_expected: false
-
-question_types:
-  - multiple_choice
-  - multiple_response
-  - ordering
-  - matching
-
+question_types: [multiple_choice, multiple_response, ordering, matching]
 scoring:
   passing_scaled_score: 700
-
 domains:
-  - id: fundamentals_of_ai_and_ml
-    name: Fundamentals of AI and ML
-    weight: 20
-  - id: fundamentals_of_generative_ai
-    name: Fundamentals of Generative AI
-    weight: 24
-  - id: applications_of_foundation_models
-    name: Applications of Foundation Models
-    weight: 28
-  - id: responsible_ai
-    name: Guidelines for Responsible AI
-    weight: 14
-  - id: security_compliance_and_governance
-    name: Security, Compliance, and Governance for AI Solutions
-    weight: 14
-
+- {id: fundamentals_of_ai_and_ml, name: Fundamentals of AI and ML, weight: 20}
+- {id: fundamentals_of_generative_ai, name: Fundamentals of Generative AI, weight: 24}
+- {id: applications_of_foundation_models, name: Applications of Foundation Models, weight: 28}
+- {id: responsible_ai, name: Guidelines for Responsible AI, weight: 14}
+- {id: security_compliance_and_governance, name: 'Security, Compliance, and Governance for AI Solutions', weight: 14}
 depth_profile: foundational
-question_patterns:
-  - ai_use_case_selection
-  - concept_comparison
-  - foundation_model_application
-  - responsible_ai
-  - security_and_governance
-out_of_scope_emphasis:
-  - model_development
-  - feature_engineering
-  - hyperparameter_tuning
-  - ai_pipeline_implementation
-  - mathematical_analysis
+question_patterns: [ai_use_case_selection, concept_comparison, foundation_model_application, responsible_ai, security_and_governance]
+curriculum:
+  path: certifications/foundational/AIF-C01/curriculum.yaml
+  version: '0.2'
+out_of_scope_emphasis: [model_development, feature_engineering, hyperparameter_tuning, ai_pipeline_implementation, mathematical_analysis]
