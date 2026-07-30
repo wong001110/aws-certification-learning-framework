@@ -1,0 +1,40 @@
+schema_version: 1
+id: replace-with-stable-lesson-id
+certification_id: SAA-C03
+curriculum_version: '0.2'
+title: Replace with lesson title
+objective_ids:
+- replace-with-objective-id
+prerequisite_lesson_ids: []
+estimated_minutes: 45
+delivery:
+- type: orientation
+  title: Prior knowledge
+  instructions: Elicit relevant prior knowledge and state the bounded lesson outcome.
+- type: explanation
+  title: Core concept
+  instructions: Explain the concept at the certification's required depth using official terminology.
+- type: comparison
+  title: Nearest alternatives
+  instructions: Contrast the concept with plausible alternatives and state the conditions that change the decision.
+- type: knowledge_check
+  title: Apply
+  instructions: Ask a new question that directly tests the objective.
+  expected_response: Describe the evidence that demonstrates understanding.
+- type: summary
+  title: Review
+  instructions: Summarize the decision model, limitations, and next prerequisite.
+knowledge_checks:
+- id: replace-check-id
+  type: scenario
+  prompt: Replace with an original scenario or reasoning prompt.
+  evidence:
+  - Replace with observable mastery evidence
+sources:
+- title: Official AWS source
+  url: https://docs.aws.amazon.com/
+  accessed_at: '2026-07-30'
+review:
+  status: draft
+  verified_at: '2026-07-30'
+  notes: Replace all placeholders before approval.
