@@ -1,0 +1,49 @@
+schema_version: 1
+certification_id: SAA-C03
+curriculum_version: '0.2'
+current_stage_id: stage-02-foundations
+current_lesson_id: architecture-decision-foundations
+objective_status:
+  saa-exam-map: {status: proficient, confidence: 0.9, evidence_count: 2, attempts: 2, correct: 2, last_updated: '2026-07-30T09:30:00+08:00'}
+  saa-global-infrastructure: {status: practicing, confidence: 0.65, evidence_count: 2, attempts: 3, correct: 2, last_updated: '2026-07-30T10:10:00+08:00'}
+  saa-identity-access: {status: introduced, confidence: 0.4, evidence_count: 1, attempts: 0, correct: 0, last_updated: '2026-07-30T10:15:00+08:00'}
+  saa-network-security: {status: needs_review, confidence: 0.35, evidence_count: 1, attempts: 2, correct: 0, last_updated: '2026-07-30T10:20:00+08:00'}
+  saa-data-protection: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-resilient-compute: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-resilient-data: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-decoupling: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-storage-selection: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-compute-selection: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-database-selection: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-network-performance: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-cost-optimization: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-service-comparisons: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-integrated-architecture: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-troubleshoot-architecture: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-timed-readiness: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+  saa-mock-readiness: {status: not_started, confidence: 0.0, evidence_count: 0, attempts: 0, correct: 0, last_updated: null}
+completed_lesson_ids: []
+weak_objectives: [saa-network-security]
+next_recommendation:
+  activity_type: comparison
+  objective_ids: [saa-network-security]
+  reason: The learner needs to distinguish security groups, network ACLs, routing, and private connectivity before continuing.
+history:
+- occurred_at: '2026-07-30T09:30:00+08:00'
+  activity_type: lesson
+  reference_id: orientation-baseline
+  result: completed
+  objective_ids: [saa-exam-map]
+  notes: Exam structure and learning method understood.
+- occurred_at: '2026-07-30T10:10:00+08:00'
+  activity_type: question
+  reference_id: global-infrastructure-check
+  result: correct
+  objective_ids: [saa-global-infrastructure]
+  notes: Correct answer with partial reasoning.
+- occurred_at: '2026-07-30T10:20:00+08:00'
+  activity_type: question
+  reference_id: network-boundary-check
+  result: incorrect
+  objective_ids: [saa-network-security]
+  notes: Confused route tables with traffic filtering controls.
