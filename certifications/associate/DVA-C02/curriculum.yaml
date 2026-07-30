@@ -1,0 +1,39 @@
+schema_version: 1
+certification_id: DVA-C02
+curriculum_version: '0.2'
+title: DVA-C02 Structured Conversational Curriculum
+description: A structured developer curriculum for building securing deploying debugging and optimizing AWS applications.
+estimated_hours: 52
+stages:
+- {id: stage-01-orientation, order: 1, title: Orientation and baseline, kind: orientation, description: Orientation and baseline, module_ids: [dva-orientation], completion: {required_objective_status: introduced, minimum_evidence_count: 1}}
+- {id: stage-02-foundations, order: 2, title: Developer foundations, kind: foundations, description: Developer foundations, module_ids: [dva-foundations], completion: {required_objective_status: proficient, minimum_evidence_count: 2}}
+- {id: stage-03-domains, order: 3, title: Development security deployment and operations, kind: domain, description: Development security deployment and operations, module_ids: [dva-development, dva-security, dva-deployment, dva-operations], completion: {required_objective_status: proficient, minimum_evidence_count: 3}}
+- {id: stage-04-comparisons, order: 4, title: Implementation comparisons, kind: comparison, description: Implementation comparisons, module_ids: [dva-comparisons], completion: {required_objective_status: practicing, minimum_evidence_count: 3}}
+- {id: stage-05-integration, order: 5, title: Integrated application scenarios, kind: integration, description: Integrated application scenarios, module_ids: [dva-integration], completion: {required_objective_status: proficient, minimum_evidence_count: 4, minimum_quiz_accuracy: 0.75}}
+- {id: stage-06-repair, order: 6, title: Weakness repair, kind: repair, description: Weakness repair, module_ids: [dva-repair], completion: {required_objective_status: proficient, minimum_evidence_count: 3}}
+- {id: stage-07-timed, order: 7, title: Timed mixed quizzes, kind: timed_quiz, description: Timed mixed quizzes, module_ids: [dva-readiness], completion: {required_objective_status: proficient, minimum_evidence_count: 5, minimum_quiz_accuracy: 0.8}}
+- {id: stage-08-mock, order: 8, title: Mock exam and readiness review, kind: mock_exam, description: Mock exam and readiness review, module_ids: [dva-readiness], completion: {required_objective_status: proficient, minimum_evidence_count: 6, minimum_quiz_accuracy: 0.8}}
+modules:
+- {id: dva-orientation, title: Orientation and baseline, description: Orientation and baseline, domain_ids: [development_with_aws_services], objective_ids: [dva-exam-map], prerequisite_module_ids: [], lesson_paths: []}
+- {id: dva-foundations, title: Application development foundations, description: Application development foundations, domain_ids: [development_with_aws_services], objective_ids: [dva-sdk-cli, dva-lambda], prerequisite_module_ids: [dva-orientation], lesson_paths: [certifications/associate/DVA-C02/lessons/serverless-event-driven-development.yaml]}
+- {id: dva-development, title: Development with AWS services, description: Development with AWS services, domain_ids: [development_with_aws_services], objective_ids: [dva-data-stores, dva-app-integration], prerequisite_module_ids: [dva-foundations], lesson_paths: []}
+- {id: dva-security, title: Application security, description: Application security, domain_ids: [security], objective_ids: [dva-app-security], prerequisite_module_ids: [dva-foundations], lesson_paths: []}
+- {id: dva-deployment, title: Testing and deployment, description: Testing and deployment, domain_ids: [deployment], objective_ids: [dva-deployment-strategies], prerequisite_module_ids: [dva-development, dva-security], lesson_paths: []}
+- {id: dva-operations, title: Troubleshooting and optimization, description: Troubleshooting and optimization, domain_ids: [troubleshooting_and_optimization], objective_ids: [dva-observability], prerequisite_module_ids: [dva-deployment], lesson_paths: []}
+- {id: dva-comparisons, title: Implementation comparisons, description: Implementation comparisons, domain_ids: [development_with_aws_services, security, deployment, troubleshooting_and_optimization], objective_ids: [dva-integrated-app], prerequisite_module_ids: [dva-development, dva-security, dva-deployment, dva-operations], lesson_paths: []}
+- {id: dva-integration, title: Integrated developer scenarios, description: Integrated developer scenarios, domain_ids: [development_with_aws_services, security, deployment, troubleshooting_and_optimization], objective_ids: [dva-integrated-app], prerequisite_module_ids: [dva-comparisons], lesson_paths: []}
+- {id: dva-repair, title: Weakness repair, description: Weakness repair, domain_ids: [development_with_aws_services, security, deployment, troubleshooting_and_optimization], objective_ids: [dva-integrated-app], prerequisite_module_ids: [dva-integration], lesson_paths: []}
+- {id: dva-readiness, title: Timed quizzes and final readiness, description: Timed quizzes and final readiness, domain_ids: [development_with_aws_services, security, deployment, troubleshooting_and_optimization], objective_ids: [dva-mixed-readiness], prerequisite_module_ids: [dva-repair], lesson_paths: []}
+objectives:
+- {id: dva-exam-map, title: Explain the DVA-C02 domains and developer-role boundaries, domain_ids: [development_with_aws_services], importance: supporting, prerequisite_objective_ids: [], mastery_evidence: [explain]}
+- {id: dva-sdk-cli, title: Use AWS SDK API and CLI concepts in application development, domain_ids: [development_with_aws_services], importance: core, prerequisite_objective_ids: [], mastery_evidence: [explain, apply]}
+- {id: dva-lambda, title: Develop and configure event-driven AWS Lambda functions, domain_ids: [development_with_aws_services], importance: core, prerequisite_objective_ids: [], mastery_evidence: [explain, apply]}
+- {id: dva-data-stores, title: Use AWS data stores from application code by access pattern, domain_ids: [development_with_aws_services], importance: core, prerequisite_objective_ids: [], mastery_evidence: [compare, apply]}
+- {id: dva-app-integration, title: Integrate applications with queues topics events streams and workflows, domain_ids: [development_with_aws_services], importance: core, prerequisite_objective_ids: [], mastery_evidence: [compare, apply]}
+- {id: dva-app-security, title: Apply least privilege temporary credentials encryption and secret management, domain_ids: [security], importance: core, prerequisite_objective_ids: [], mastery_evidence: [explain, apply]}
+- {id: dva-deployment-strategies, title: Test package and deploy applications using AWS CI CD capabilities, domain_ids: [deployment], importance: core, prerequisite_objective_ids: [], mastery_evidence: [apply, troubleshoot]}
+- {id: dva-observability, title: Use logs metrics traces and diagnostics to troubleshoot and optimize applications, domain_ids: [troubleshooting_and_optimization], importance: core, prerequisite_objective_ids: [], mastery_evidence: [troubleshoot, apply]}
+- {id: dva-integrated-app, title: Solve integrated application scenarios across development security deployment and operations, domain_ids: [development_with_aws_services, security, deployment, troubleshooting_and_optimization], importance: core, prerequisite_objective_ids: [dva-app-integration, dva-app-security, dva-deployment-strategies, dva-observability], mastery_evidence: [integrated_scenario, troubleshoot]}
+- {id: dva-mixed-readiness, title: Solve mixed DVA-C02 questions under time pressure, domain_ids: [development_with_aws_services, security, deployment, troubleshooting_and_optimization], importance: core, prerequisite_objective_ids: [dva-integrated-app], mastery_evidence: [timed_question, integrated_scenario]}
+sources:
+- {title: AWS Certified Developer - Associate exam guide, url: 'https://docs.aws.amazon.com/aws-certification/latest/developer-associate-02/developer-associate-02.html', accessed_at: '2026-07-30'}
